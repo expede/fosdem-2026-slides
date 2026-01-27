@@ -8,9 +8,10 @@
 
 <div class="title-text">
 
-# Automerge + Keyhive
+# Automerge
+# <span class="indent-keyhive">& Keyhive</span>
 
-## Local-First Without Compromise
+## <span class="indent-subtitle-1">Local-first as <em>infrastructure</em></span>
 
 </div>
 

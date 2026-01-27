@@ -126,25 +126,51 @@ p, li {
   color: $slate;
 }
 
-// Title slide - logo behind text
+// Title slide - logo left, text right following diamond
 .titlescreen {
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .title-logo-bg {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  opacity: 0.9;
+  width: 450px;
+  height: 450px;
+  flex-shrink: 0;
 }
 
 .title-text {
-  position: relative;
-  z-index: 1;
+  text-align: left;
+  margin-left: -40px;
+  margin-top: -0.5em;
+
+  h1, h2 {
+    text-align: left !important;
+    margin: 0 !important;
+    line-height: 1.1 !important;
+    opacity: 0;
+  }
+
+  h1 {
+    font-size: 3rem !important;
+  }
+
+  h2 {
+    font-weight: 400 !important;
+    font-size: 1.1rem !important;
+    margin-top: 0.4rem !important;
+  }
+
+  .indent-keyhive {
+    padding-left: 0.85em;
+  }
+
+  .indent-subtitle-1 {
+    padding-left: 0.6em
+  }
 }
 
 #automerge-logo .am-border {

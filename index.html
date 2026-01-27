@@ -39,6 +39,7 @@
 
             <div class="slides">
                 <!-- Section 1: Intro -->
+                <section data-markdown="slides/01-intro/00-blank.md"></section>
                 <section data-markdown="slides/01-intro/01-title.md"></section>
                 <section data-markdown="slides/01-intro/02-speakers.md"></section>
                 <section data-markdown="slides/01-intro/03-sponsors.md"></section>
@@ -135,6 +136,31 @@
            });
          }
 
+         // Animate title text (fade + drift from right)
+         function animateTitleText() {
+           const h1s = document.querySelectorAll('.title-text h1');
+           const h2s = document.querySelectorAll('.title-text h2');
+           if (!h1s.length) return;
+
+           // Animate h1s first
+           anime.animate(h1s, {
+             opacity: [0, 1],
+             translateX: [30, 0],
+             ease: 'outQuad',
+             duration: 600,
+             delay: function(el, i) { return 800 + i * 100; }
+           });
+
+           // Animate h2s after
+           anime.animate(h2s, {
+             opacity: [0, 1],
+             translateX: [20, 0],
+             ease: 'outQuad',
+             duration: 500,
+             delay: 1200
+           });
+         }
+
          // Animate sponsor logos
          function animateSponsorLogos() {
            const logos = document.querySelectorAll('.sponsor-logos img');
@@ -153,7 +179,10 @@
 
          // Run animation when page loads (first slide)
          document.addEventListener('DOMContentLoaded', function() {
-           setTimeout(animateAutomergeLogo, 300);
+           setTimeout(function() {
+             animateAutomergeLogo();
+             animateTitleText();
+           }, 300);
          });
 
          Reveal.initialize({
