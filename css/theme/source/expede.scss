@@ -1,10 +1,9 @@
-// Automerge/Ink&Switch themed slides for FOSDEM 2026
+// Minimal Automerge theme for FOSDEM 2026
 
-@use "sass:color";
 @import "../template/mixins";
 @import "../template/settings";
 
-// Font faces (vendored for offline use)
+// Fonts (vendored for offline use)
 @font-face {
   font-family: "Overpass";
   src: url("../../assets/fonts/overpass.woff2") format("woff2");
@@ -21,572 +20,86 @@
   font-display: swap;
 }
 
-// Automerge color palette
+// Colors
 $yellow: #fc3;
 $slate: #222;
-$deep: #111;
 $white: #fcfcfc;
-$mid: #555;
-$grey: #888;
-$light-grey: #ddd;
 
-// Theme settings
+// Theme settings (FOSDEM: bright bg, dark text, high contrast)
 $mainColor: $slate;
 $headingColor: $slate;
-$headingTextShadow: none;
 $backgroundColor: $white;
-$linkColor: $slate;
-$linkColorHover: $mid;
-$selectionBackgroundColor: rgba($yellow, 0.4);
-
-$overlayElementBgColor: 0, 0, 0;
-$overlayElementFgColor: 240, 240, 240;
-
 $mainFont: "Overpass", system-ui, sans-serif;
 $codeFont: "Overpass Mono", ui-monospace, monospace;
-$mainFontSize: 1rem;
+$headingFont: "Overpass", system-ui, sans-serif;
+$headingTextShadow: none;
 
 @import "../template/theme";
 
-// Base styles
+// Base font size (large for projector)
 html {
   font-size: 36px;
 }
 
+// Debug: red outside, white inside
 .reveal {
-  font-family: $mainFont;
-  font-weight: 400;
+  background: red;
+}
+
+.reveal .slides > section {
   background: $white;
 }
 
-.reveal .slides {
-  aspect-ratio: 16 / 9;
-  max-width: 100vw;
-  max-height: 100vh;
-  margin: auto;
-  padding: 0;
-  text-align: left;
-}
-
-.reveal .slides > section,
-.reveal .slides > section > section {
-  padding: 2.5rem 3rem;
-  box-sizing: border-box;
-}
-
-// Dot grid in bottom-right corner (bold accent)
-.reveal .slides section:not(.no-dots):not(.inverted) {
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 45%;
-    height: 40%;
-    mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r=".5"/><circle cx="3" cy="3" r=".5"/></svg>');
-    mask-size: 14px 14px;
-    background: $slate;
-    opacity: 0.12;
-    pointer-events: none;
-    z-index: 0;
-  }
-}
-
-// Yellow dots for inverted slides
-.reveal .slides section.inverted:not(.no-dots) {
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 45%;
-    height: 40%;
-    mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r=".5"/><circle cx="3" cy="3" r=".5"/></svg>');
-    mask-size: 14px 14px;
-    background: $yellow;
-    opacity: 0.25;
-    pointer-events: none;
-    z-index: 0;
-  }
-}
-
-// Disable dots on specific slides
-.reveal .slides section.no-dots::after {
-  display: none;
-}
-
-.reveal code {
-  font-family: $codeFont;
-  font-size: 0.9em;
-  background: rgba($slate, 0.08);
-  padding: 0.1em 0.3em;
-  border-radius: 4px;
-}
-
-.reveal pre code {
-  background: $deep;
-  color: $white;
-  padding: 1em;
-  border-radius: 8px;
-  font-size: 0.8em;
-  line-height: 1.5;
-}
-
-// Title screen (centered, large title)
-.titlescreen {
-  height: 100%;
-  display: flex !important;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 3rem !important;
-
-  h1 {
-    font-family: $mainFont;
-    font-weight: 900;
-    font-size: 3.5rem;
-    color: $slate;
-    margin: 0 0 0.5rem 0;
-    line-height: 1.1;
-  }
-
-  h2 {
-    font-family: $mainFont;
-    font-weight: 400;
-    font-size: 1.5rem;
-    color: $mid;
-    text-transform: none;
-    margin: 0;
-    line-height: 1.4;
-  }
-
-  p {
-    margin: 0.5rem 0;
-  }
-
-  .big-text {
-    font-size: 1.8rem;
-    color: $mid;
-  }
-}
-
-// Inverted section dividers (dark bg, light text)
-.inverted {
-  background: $deep !important;
-  color: $white !important;
-
-  h1 {
-    color: $white !important;
-    font-size: 4rem;
-    font-weight: 900;
-  }
-
-  h2 {
-    color: rgba($white, 0.7) !important;
-  }
-
-  .big-text {
-    color: $white;
-  }
-
-  .accent {
-    background: $yellow;
-    color: $deep;
-  }
-}
-
-// Standard titled slides
-.myslide {
-  height: 100%;
-  position: relative;
-}
-
-.titled {
-  width: 100% !important;
-  margin: 0 !important;
-
-  h1 {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: $grey;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin: 0 0 0.5rem 0;
-  }
-
-  h2 {
-    font-family: $mainFont;
-    font-weight: 900;
-    font-size: 2.5rem;
-    color: $slate;
-    margin: 0 0 1.5rem 0;
-    line-height: 1.2;
-  }
-
-  h3 {
-    font-weight: 500;
-    font-size: 1.2rem;
-    color: $mid;
-    margin: 0 0 1rem 0;
-  }
-
-  p, li {
-    font-size: 1.3rem;
-    line-height: 1.5;
-    color: $slate;
-  }
-
-  ul, ol {
-    margin: 1rem 0;
-    padding-left: 1.5rem;
-  }
-
-  li {
-    margin-bottom: 0.75rem;
-  }
-}
-
-// Big text utility
-.big-text {
-  font-size: 2rem !important;
-  font-weight: 700;
-  line-height: 1.3;
-  color: $slate;
-  margin: 0.5rem 0;
-}
-
-// Accent utilities
-.accent {
-  color: $deep;
-  background: $yellow;
-  padding: 0.1em 0.3em;
-  border-radius: 4px;
-}
-
-.accent-border {
-  border-left: 6px solid $yellow;
-  padding-left: 0.75em;
-  display: inline-block;
-}
-
-// Vertical centering utility
-.vcenter {
-  height: 100%;
-  display: flex !important;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 3rem !important;
-
-  > * {
-    max-width: 80%;
-  }
-}
-
-// Speaker grid for intro slide
-.speaker-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
-  margin-top: 2rem;
-
-  .speaker {
-    text-align: center;
-
-    h3 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: $slate;
-      margin: 0 0 0.25rem 0;
-    }
-
-    p {
-      font-size: 1.1rem;
-      color: $mid;
-      margin: 0;
-    }
-  }
-}
-
-// Sponsor logos container
-.sponsor-logos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2rem;
-
-  img {
-    max-height: 4rem;
-    max-width: 12rem;
-    object-fit: contain;
-  }
-}
-
-// Blockquote styling
-.reveal blockquote {
-  background: none;
-  border: none;
-  box-shadow: none;
-  font-style: normal;
-  padding: 0;
-  margin: 0.5rem 0;
-  width: 100%;
-
-  &.big-text {
-    font-weight: 600;
-    color: $mid;
-
-    em {
-      font-style: normal;
-      color: $slate;
-      background: linear-gradient(to top, transparent 10%, $yellow 10%, $yellow 45%, transparent 45%);
-    }
-  }
-}
-
-// Fragment animations
-.reveal .slides section .fragment {
-  transition: opacity 400ms ease, transform 400ms ease;
-}
-
-.reveal .slides section .fragment:not(.visible) {
-  opacity: 0;
-}
-
-.reveal .slides section .fragment.visible {
-  opacity: 1;
-}
-
-.reveal .slides .km-in-up {
-  opacity: 0;
-  transform: translateY(0.6em);
-  transition: opacity 350ms ease, transform 350ms ease;
-  will-change: opacity, transform;
-}
-
-.reveal .slides .km-in-up.visible,
-.reveal .slides .visible .km-in-up {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 600ms cubic-bezier(0.2, 0.8, 0.2, 1),
-              transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.reveal .slides .km-in-up.km-delay-200.visible,
-.reveal .slides .visible .km-in-up.km-delay-200 {
-  transition-delay: 200ms;
-}
-
-.reveal .slides .km-in-up.km-delay-400.visible,
-.reveal .slides .visible .km-in-up.km-delay-400 {
-  transition-delay: 400ms;
-}
-
-.reveal .slides .fragment.km-in-left {
-  opacity: 0;
-  transform: translateX(-0.8em);
-  will-change: opacity, transform;
-}
-
-.reveal .slides .fragment.km-in-left.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.reveal .slides .fragment.km-in-pop {
-  opacity: 0;
-  transform: translateY(0.3em) scale(0.98);
-  transform-origin: 50% 50%;
-  will-change: opacity, transform;
-}
-
-.reveal .slides .fragment.km-in-pop.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.fragment.blur {
-  filter: blur(5px);
-  transition: filter 400ms ease;
-}
-
-.fragment.blur.visible {
-  filter: none;
-}
-
-// Avatar styling
-.avatar-fig {
+// Dot grid across bottom (full width, outside content)
+.reveal::after {
+  content: "";
   position: absolute;
-  right: 3rem;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r=".5"/><circle cx="3" cy="3" r=".5"/></svg>');
+  mask-size: 14px 14px;
+  background: $slate;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.avatar {
-  width: 12rem;
-  height: 12rem;
-  padding: 0;
-  margin: 0;
-  border-radius: 50%;
-  border: 6px solid $yellow;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba($slate, 0.15);
-}
-
-.avatar-frame {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-.avatar-fig figcaption {
-  text-align: center;
-  margin-top: 1rem;
-
-  code {
-    font-size: 1rem;
-  }
-}
-
-// List styling
-.reveal ul,
-.reveal ol {
-  margin-left: 0;
-}
-
-.reveal li {
-  margin-bottom: 0.6rem;
-}
-
-// Progress bar (yellow accent)
-.reveal .progress {
-  height: 5px;
-  background: rgba($slate, 0.1);
-}
-
-.reveal .progress span {
-  background: $yellow;
-  transition: width 300ms ease;
-}
-
-// SVG arrow animations
-.reveal svg.arrow {
-  color: $slate;
-}
-
-.reveal svg.arrow path {
-  stroke-width: 4px;
-}
-
-.reveal svg.arrow.draw path {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-}
-
-.reveal svg.arrow.draw.current-fragment path {
-  animation: arrow-draw 750ms ease-in-out forwards;
-}
-
-@keyframes arrow-draw {
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes arrowhead-in {
-  to { transform: scale(1); opacity: 1; }
-}
-
-// Manual dot grid classes
-.dots {
-  position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r=".5"/><circle cx="3" cy="3" r=".5"/></svg>');
-    mask-size: 12px 12px;
-    background: currentColor;
-    opacity: 0.15;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  > * {
-    position: relative;
-    z-index: 1;
-  }
-}
-
-.dots-lg {
-  position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r=".4"/><circle cx="3" cy="3" r=".4"/></svg>');
-    mask-size: 20px 20px;
-    background: currentColor;
-    opacity: 0.12;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  > * {
-    position: relative;
-    z-index: 1;
-  }
-}
-
-.dots-yellow {
-  position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r=".5"/><circle cx="3" cy="3" r=".5"/></svg>');
-    mask-size: 12px 12px;
-    background: $yellow;
-    opacity: 0.25;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  > * {
-    position: relative;
-    z-index: 1;
-  }
-}
-
-// Emphasis underline (yellow highlight)
+// Yellow highlight for <em>
 em {
   font-style: normal;
   background: linear-gradient(to top, transparent 10%, $yellow 10%, $yellow 45%, transparent 45%);
 }
 
-// Strong = bold + slightly larger
-strong {
-  font-weight: 800;
+// Typography
+h1, h2, h3, p, li {
+  color: $slate;
 }
 
-// Slide number styling
-.reveal .slide-number {
-  font-family: $mainFont;
-  font-size: 0.7rem;
-  color: $grey;
-  background: none;
-  right: 1.5rem;
-  bottom: 1rem;
+h1 {
+  font-weight: 900 !important;
+  font-size: 3.5rem !important;
+}
+
+h2 {
+  font-weight: 900 !important;
+  font-size: 2.5rem !important;
+}
+
+h3 {
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+}
+
+p, li {
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.big-text {
+  font-size: 2rem !important;
+  font-weight: 700;
+  line-height: 1.3;
+  color: $slate;
 }
