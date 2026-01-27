@@ -103,6 +103,8 @@
            const arrow = document.querySelector('#automerge-logo .am-arrow');
            if (!border || !inner || !arrow) return;
 
+           const innerDrawable = anime.svg.createDrawable(inner);
+
            // Wipe in yellow border from top-left to bottom-right
            anime.animate(border, {
              clipPath: [
@@ -112,19 +114,16 @@
              ease: 'inOutQuad',
              duration: 800,
              onComplete: function() {
-               // Wipe in inner black border
-               anime.animate(inner, {
-                 clipPath: [
-                   'polygon(0% 0%, 0% 0%, 0% 0%)',
-                   'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
-                 ],
-                 ease: 'inOutQuad',
-                 duration: 600,
+               // Draw inner black border around the shape
+               anime.animate(innerDrawable, {
+                 draw: ['0 0', '0 1'],
+                 ease: 'inOutSine',
+                 duration: 800,
                  onComplete: function() {
-                   // Wipe in arrow from top to bottom
+                   // Wipe in arrow from bottom to top
                    anime.animate(arrow, {
                      clipPath: [
-                       'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
+                       'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
                        'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
                      ],
                      ease: 'outQuad',

@@ -126,12 +126,25 @@ p, li {
   color: $slate;
 }
 
-// Title slide logo
-.title-logo {
-  width: 120px;
-  height: auto;
-  margin-bottom: 1rem;
-  color: $slate;
+// Title slide - logo behind text
+.titlescreen {
+  position: relative;
+}
+
+.title-logo-bg {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  opacity: 0.9;
+}
+
+.title-text {
+  position: relative;
+  z-index: 1;
 }
 
 #automerge-logo .am-border {
@@ -140,8 +153,9 @@ p, li {
 }
 
 #automerge-logo .am-inner {
-  fill: $slate;
-  clip-path: polygon(0% 0%, 0% 0%, 0% 0%);
+  fill: none;
+  stroke: $slate;
+  stroke-width: 2;
 }
 
 #automerge-logo .am-arrow {
