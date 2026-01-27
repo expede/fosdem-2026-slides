@@ -4,12 +4,16 @@
 
 <div class="speaker-grid">
   <div class="speaker">
-    <h3>Brooklyn Zelenka</h3>
+    <img src="assets/headshots/alex.png" alt="Alex Good" class="headshot">
+    <h3>Alex Good</h3>
+    <p>Automerge Maintainer</p>
     <p>Ink &amp; Switch</p>
   </div>
   <div class="speaker">
-    <h3>Alex Good</h3>
-    <p>Automerge Maintainer</p>
+    <img src="assets/headshots/brooklyn.png" alt="Brooklyn Zelenka" class="headshot">
+    <h3>Brooklyn Zelenka</h3>
+    <p>Keyhive Lead</p>
+    <p>Ink &amp; Switch</p>
   </div>
 </div>
 
