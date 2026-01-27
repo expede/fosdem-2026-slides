@@ -134,10 +134,19 @@ p, li {
   color: $slate;
 }
 
-#automerge-logo .am-path {
-  fill: transparent;
-  stroke: $slate;
-  stroke-width: 0.5;
+#automerge-logo .am-border {
+  fill: $yellow;
+  clip-path: polygon(0% 0%, 0% 0%, 0% 0%);
+}
+
+#automerge-logo .am-inner {
+  fill: $slate;
+  clip-path: polygon(0% 0%, 0% 0%, 0% 0%);
+}
+
+#automerge-logo .am-arrow {
+  fill: $slate;
+  clip-path: polygon(0% 0%, 0% 0%, 0% 0%);
 }
 
 // Ink & Switch style ink splashes in top corners

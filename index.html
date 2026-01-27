@@ -98,22 +98,39 @@
          // - https://revealjs.com/config/
          // Animate Automerge logo on title slide
          function animateAutomergeLogo() {
-           const path = document.querySelector('#automerge-logo .am-path');
-           if (!path) return;
+           const border = document.querySelector('#automerge-logo .am-border');
+           const inner = document.querySelector('#automerge-logo .am-inner');
+           const arrow = document.querySelector('#automerge-logo .am-arrow');
+           if (!border || !inner || !arrow) return;
 
-           const drawable = anime.svg.createDrawable(path);
-
-           anime.animate(drawable, {
-             draw: ['0 0', '0 1'],
-             ease: 'inOutSine',
-             duration: 2000,
+           // Wipe in yellow border from top-left to bottom-right
+           anime.animate(border, {
+             clipPath: [
+               'polygon(0% 0%, 0% 0%, 0% 0%)',
+               'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
+             ],
+             ease: 'inOutQuad',
+             duration: 800,
              onComplete: function() {
-               // Fill in after drawing completes
-               anime.animate(path, {
-                 fill: ['rgba(34,34,34,0)', 'rgba(34,34,34,1)'],
-                 stroke: ['rgba(34,34,34,1)', 'rgba(34,34,34,0)'],
-                 ease: 'inOutSine',
-                 duration: 500
+               // Wipe in inner black border
+               anime.animate(inner, {
+                 clipPath: [
+                   'polygon(0% 0%, 0% 0%, 0% 0%)',
+                   'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
+                 ],
+                 ease: 'inOutQuad',
+                 duration: 600,
+                 onComplete: function() {
+                   // Wipe in arrow from top to bottom
+                   anime.animate(arrow, {
+                     clipPath: [
+                       'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
+                       'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
+                     ],
+                     ease: 'outQuad',
+                     duration: 400
+                   });
+                 }
                });
              }
            });
