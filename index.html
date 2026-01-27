@@ -96,6 +96,50 @@
          // More info about initialization & config:
          // - https://revealjs.com/initialization/
          // - https://revealjs.com/config/
+         // Animate Automerge logo on title slide
+         function animateAutomergeLogo() {
+           const path = document.querySelector('#automerge-logo .am-path');
+           if (!path) return;
+
+           const drawable = anime.svg.createDrawable(path);
+
+           anime.animate(drawable, {
+             draw: ['0 0', '0 1'],
+             ease: 'inOutSine',
+             duration: 2000,
+             onComplete: function() {
+               // Fill in after drawing completes
+               anime.animate(path, {
+                 fill: ['rgba(34,34,34,0)', 'rgba(34,34,34,1)'],
+                 stroke: ['rgba(34,34,34,1)', 'rgba(34,34,34,0)'],
+                 ease: 'inOutSine',
+                 duration: 500
+               });
+             }
+           });
+         }
+
+         // Animate sponsor logos
+         function animateSponsorLogos() {
+           const logos = document.querySelectorAll('.sponsor-logos img');
+           if (!logos.length) return;
+
+           anime.animate(logos, {
+             opacity: [0, 1],
+             translateY: [30, 0],
+             scale: [0.8, 1],
+             rotate: function() { return anime.random(-5, 5); },
+             ease: 'outElastic(1, .6)',
+             duration: 1000,
+             delay: function(el, i) { return i * 150; }
+           });
+         }
+
+         // Run animation when page loads (first slide)
+         document.addEventListener('DOMContentLoaded', function() {
+           setTimeout(animateAutomergeLogo, 300);
+         });
+
          Reveal.initialize({
               width: 1920,
               height: 1080,
@@ -108,6 +152,7 @@
              controls: false,
 
              autoanimate: true,
+             transition: 'fade',
              backgroundTransition: 'fade',
 
              // Learn about plugins: https://revealjs.com/plugins/
@@ -119,6 +164,14 @@
                  RevealMermaid,
                  RevealHighlight,
              ],
+         });
+
+         // Trigger animations on slide change
+         Reveal.on('slidechanged', function(event) {
+           // Animate sponsor logos when that slide appears
+           if (event.currentSlide.querySelector('.sponsor-logos')) {
+             animateSponsorLogos();
+           }
          });
 
         </script>

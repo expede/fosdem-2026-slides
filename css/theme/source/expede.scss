@@ -41,14 +41,6 @@ html {
   font-size: 36px;
 }
 
-// Debug: red outside, white inside
-.reveal {
-  background: red;
-}
-
-.reveal .slides > section {
-  background: $white;
-}
 
 // Dot grids - three bands with decreasing dot sizes going up
 // A: bottom 0-10%, largest dots
@@ -134,6 +126,20 @@ p, li {
   color: $slate;
 }
 
+// Title slide logo
+.title-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 1rem;
+  color: $slate;
+}
+
+#automerge-logo .am-path {
+  fill: transparent;
+  stroke: $slate;
+  stroke-width: 0.5;
+}
+
 // Ink & Switch style ink splashes in top corners
 .reveal .ink-splash {
   position: absolute;
@@ -168,4 +174,31 @@ p, li {
 .reveal .ink-splash-4,
 .reveal .ink-splash-5 {
   display: none;
+}
+
+// Sponsor logos layout
+.sponsor-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem 4rem;
+  margin-top: 2rem;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+
+  img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0;
+    transform: translateY(30px);
+
+    // Specific sizing adjustments
+    &:nth-child(1) { height: 50px; } // ARIA - smaller text logo
+    &:nth-child(2) { height: 90px; } // Ink & Switch - larger
+    &:nth-child(3) { height: 70px; } // NLnet
+    &:nth-child(4) { height: 60px; } // BlueYard
+  }
 }
