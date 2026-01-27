@@ -124,6 +124,7 @@ p, li {
   font-weight: 700;
   line-height: 1.3;
   color: $slate;
+  box-shadow: none !important;
 }
 
 // Title slide - logo left, text right following diamond
@@ -194,8 +195,8 @@ p, li {
   position: absolute;
   pointer-events: none;
   z-index: 2;
-  color: #000;
-  opacity: 0.15;
+  color: $slate;
+  opacity: 1;
 }
 
 .reveal .ink-splash-1 {
