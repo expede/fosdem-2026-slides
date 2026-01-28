@@ -3,7 +3,7 @@
 <p class="big-text">Capabilities <em>compose</em> and <em>extend</em></p>
 <p class="big-text">Model ACLs, RBAC, and more</p>
 
-<svg id="caps-diagram" width="700" height="380" viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" style="margin-top: 2rem;">
+<svg id="caps-diagram" width="1094" height="594" viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" style="margin-top: 2rem;">
 <defs>
 <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
 <polygon points="0 0, 10 3.5, 0 7" fill="#222"/>
