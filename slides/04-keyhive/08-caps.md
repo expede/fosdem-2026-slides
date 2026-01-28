@@ -15,23 +15,27 @@
 <polygon points="0 0, 6 2, 0 4" fill="#fc3"/>
 </marker>
 </defs>
-<line x1="445" y1="100" x2="150" y2="100" stroke="#222" stroke-width="2" marker-end="url(#arrowhead)"/>
-<line x1="150" y1="100" x2="280" y2="265" stroke="#222" stroke-width="2" marker-end="url(#arrowhead)"/>
-<path d="M300 80 Q390 20 480 72" stroke="#fc3" stroke-width="5" fill="none" marker-end="url(#arrowhead-yellow)"/>
-<line x1="220" y1="170" x2="280" y2="115" stroke="#fc3" stroke-width="5" marker-end="url(#arrowhead-yellow)"/>
 <circle cx="120" cy="100" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
 <text x="120" y="110" text-anchor="middle" font-size="32" fill="#222">👩‍💻</text>
 <circle cx="480" cy="100" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
 <text x="480" y="110" text-anchor="middle" font-size="32" fill="#222">📄</text>
 <circle cx="300" cy="300" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
 <text x="300" y="310" text-anchor="middle" font-size="32" fill="#222">👨‍🌾</text>
+<g class="fragment" data-fragment-index="1">
+<line x1="445" y1="100" x2="150" y2="100" stroke="#222" stroke-width="2" marker-end="url(#arrowhead)"/>
+<path d="M300 80 Q390 20 480 72" stroke="#fc3" stroke-width="5" fill="none" marker-end="url(#arrowhead-yellow)"/>
 <g class="fat-arrow" transform="translate(300, 100) rotate(180)">
 <polygon points="-25,-10 10,-10 10,-18 30,0 10,18 10,10 -25,10" fill="#fc3" stroke="#222" stroke-width="2"/>
 </g>
+</g>
+<g class="fragment" data-fragment-index="2">
+<line x1="150" y1="100" x2="280" y2="265" stroke="#222" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="220" y1="170" x2="280" y2="115" stroke="#fc3" stroke-width="5" marker-end="url(#arrowhead-yellow)"/>
 <g class="fat-arrow" transform="translate(200, 170) rotate(48)">
 <polygon points="-25,-10 10,-10 10,-18 30,0 10,18 10,10 -25,10" fill="#fc3" stroke="#222" stroke-width="2"/>
 </g>
-<g class="fragment">
+</g>
+<g class="fragment" data-fragment-index="3">
 <line x1="330" y1="300" x2="520" y2="300" stroke="#222" stroke-width="2" marker-end="url(#arrowhead)"/>
 <path d="M400 280 Q300 200 220 170" stroke="#fc3" stroke-width="5" fill="none" marker-end="url(#arrowhead-yellow)"/>
 <line x1="440" y1="280" x2="480" y2="128" stroke="#888" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowhead-grey)"/>
