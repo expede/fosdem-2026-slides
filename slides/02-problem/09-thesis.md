@@ -5,11 +5,11 @@ Local-first isn't about<br/>"eliminating servers"
 </blockquote>
 
 <blockquote class="fragment big-text accent">
-It's about designing systems that respect people.
+It's about systems that <em>respect</em> people.
 </blockquote>
 
 <blockquote class="fragment big-text accent">
-Where <span class="heavy">servers <em>can't</em> hold your data hostage</span>
+Where <span class="heavy">servers CAN'T hold<br/><em>your data</em> hostage</span>
 </blockquote>
 
 </div>
