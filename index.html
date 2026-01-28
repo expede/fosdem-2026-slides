@@ -253,43 +253,48 @@
                }, anime.stagger(50, { from: 'center' }));
            }
 
-           // Sync between devices - arrows pulse back and forth
-           if (event.fragment.id === 'need-sync') {
-             const arrowRight = event.fragment.querySelector('.sync-arrow-right');
-             const arrowLeft = event.fragment.querySelector('.sync-arrow-left');
+           // NAT traversal - arrows pulse in sequence: top-left, top-right, bottom-right, bottom-left
+           if (event.fragment.id === 'need-nat') {
+             const arrowInLeft = event.fragment.querySelector('.nat-arrow-in-left');
+             const arrowInRight = event.fragment.querySelector('.nat-arrow-in-right');
+             const arrowOutLeft = event.fragment.querySelector('.nat-arrow-out-left');
+             const arrowOutRight = event.fragment.querySelector('.nat-arrow-out-right');
 
-             anime.createTimeline({ loop: true })
-               .add(arrowRight, {
-                 translateX: [0, 5, 0],
-                 opacity: [1, 0.5, 1],
-                 duration: 800,
+             anime.createTimeline({ loop: true, loopDelay: 1000 })
+               .add(arrowInLeft, {
+                 translateX: [0, 3, 0],
+                 opacity: [0.5, 1, 0.5],
+                 duration: 600,
                  ease: 'inOutSine'
                }, 0)
-               .add(arrowLeft, {
-                 translateX: [0, -5, 0],
-                 opacity: [1, 0.5, 1],
-                 duration: 800,
+               .add(arrowInRight, {
+                 translateX: [0, 3, 0],
+                 opacity: [0.5, 1, 0.5],
+                 duration: 600,
                  ease: 'inOutSine'
-               }, 400);
+               }, 200)
+               .add(arrowOutRight, {
+                 translateX: [0, -3, 0],
+                 opacity: [0.5, 1, 0.5],
+                 duration: 600,
+                 ease: 'inOutSine'
+               }, 1200)
+               .add(arrowOutLeft, {
+                 translateX: [0, -3, 0],
+                 opacity: [0.5, 1, 0.5],
+                 duration: 600,
+                 ease: 'inOutSine'
+               }, 1400);
            }
 
-           // Always-on availability - clock hands rotate, 24/7 pulses
+           // Always-on availability - clock hands rotate
            if (event.fragment.id === 'need-availability') {
              const clockHands = event.fragment.querySelector('.clock-hands');
-             const text247 = event.fragment.querySelector('.text-247');
 
              anime.animate(clockHands, {
                rotate: 360,
                duration: 3000,
                ease: 'linear',
-               loop: true
-             });
-
-             anime.animate(text247, {
-               scale: [1, 1.1, 1],
-               opacity: [1, 0.7, 1],
-               duration: 1500,
-               ease: 'inOutSine',
                loop: true
              });
            }

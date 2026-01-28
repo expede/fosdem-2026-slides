@@ -5,33 +5,42 @@
 <p class="big-text">servers can still be very useful</p>
 
 <div class="server-needs-grid">
-  <!-- Sync between devices: phone + laptop with arrows -->
-  <div class="server-need fragment" id="need-sync">
+  <!-- NAT traversal: devices behind firewalls with relay server -->
+  <div class="server-need fragment" id="need-nat">
     <svg class="need-icon" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-      <!-- Phone -->
-      <rect x="10" y="20" width="25" height="45" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
-      <circle cx="22.5" cy="58" r="2" fill="currentColor"/>
-      <!-- Laptop -->
-      <rect x="70" y="25" width="40" height="28" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
-      <path d="M65 53 L115 53 L112 58 L68 58 Z" fill="none" stroke="currentColor" stroke-width="2"/>
-      <!-- Sync arrows -->
-      <g class="sync-arrows">
-        <path class="sync-arrow-right" d="M40 35 L60 35" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
-        <path class="sync-arrow-left" d="M60 50 L40 50" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
-      </g>
       <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/></marker></defs>
+      <!-- Left device -->
+      <rect x="5" y="30" width="18" height="28" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="14" cy="52" r="1.5" fill="currentColor"/>
+      <!-- Left firewall -->
+      <path class="nat-wall-left" d="M28 15 L28 65" stroke="currentColor" stroke-width="3" stroke-dasharray="4 3"/>
+      <!-- Server in middle -->
+      <rect x="48" y="20" width="24" height="40" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+      <line x1="52" y1="28" x2="68" y2="28" stroke="currentColor" stroke-width="2"/>
+      <line x1="52" y1="36" x2="68" y2="36" stroke="currentColor" stroke-width="2"/>
+      <line x1="52" y1="44" x2="68" y2="44" stroke="currentColor" stroke-width="2"/>
+      <circle cx="64" cy="52" r="2" fill="currentColor"/>
+      <!-- Right firewall -->
+      <path class="nat-wall-right" d="M92 15 L92 65" stroke="currentColor" stroke-width="3" stroke-dasharray="4 3"/>
+      <!-- Right device -->
+      <rect x="97" y="30" width="18" height="28" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="106" cy="52" r="1.5" fill="currentColor"/>
+      <!-- Connection arrows - inbound -->
+      <path class="nat-arrow-in-left" d="M32 35 L44 35" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
+      <path class="nat-arrow-in-right" d="M76 35 L88 35" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
+      <!-- Connection arrows - outbound -->
+      <path class="nat-arrow-out-left" d="M44 45 L32 45" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
+      <path class="nat-arrow-out-right" d="M88 45 L76 45" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
     </svg>
-    <span>Sync between devices</span>
+    <span>NAT traversal</span>
   </div>
 
-  <!-- Always-on availability: clock with 24/7 -->
+  <!-- Always-on availability: clock -->
   <div class="server-need fragment" id="need-availability">
     <svg class="need-icon" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
       <!-- Clock -->
-      <circle cx="45" cy="40" r="28" fill="none" stroke="currentColor" stroke-width="2"/>
-      <path class="clock-hands" d="M45 20 L45 40 L58 50" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform-origin: 45px 40px;"/>
-      <!-- 24/7 text -->
-      <text class="text-247" x="85" y="45" font-family="Overpass" font-size="16" font-weight="700" fill="currentColor">24/7</text>
+      <circle cx="60" cy="40" r="28" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path class="clock-hands" d="M60 20 L60 40 L73 50" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform-origin: 60px 40px;"/>
     </svg>
     <span>Always-on availability</span>
   </div>
