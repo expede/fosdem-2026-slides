@@ -346,13 +346,10 @@ p, li {
 
 // Server needs grid (why you still need servers)
 .server-needs-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
   margin-top: 3rem;
-  max-width: 1600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .server-need {

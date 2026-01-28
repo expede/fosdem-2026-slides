@@ -287,43 +287,23 @@
                }, 1400);
            }
 
-           // Always-on availability - clock hands rotate
+           // Always-on availability - clock hands rotate independently
            if (event.fragment.id === 'need-availability') {
-             const clockHands = event.fragment.querySelector('.clock-hands');
+             const hourHand = event.fragment.querySelector('.clock-hour');
+             const minuteHand = event.fragment.querySelector('.clock-minute');
 
-             anime.animate(clockHands, {
+             anime.animate(hourHand, {
+               rotate: 360,
+               duration: 12000,
+               ease: 'linear',
+               loop: true
+             });
+
+             anime.animate(minuteHand, {
                rotate: 360,
                duration: 3000,
                ease: 'linear',
                loop: true
-             });
-           }
-
-           // Sharing with others - line draws in, dot pulses
-           if (event.fragment.id === 'need-sharing') {
-             const line = event.fragment.querySelector('.connection-line');
-             const dot = event.fragment.querySelector('.connection-dot');
-
-             const lineDrawable = anime.svg.createDrawable(line);
-             anime.animate(lineDrawable, {
-               draw: ['0 0', '0 1'],
-               duration: 600,
-               ease: 'inOutSine'
-             });
-
-             anime.animate(dot, {
-               scale: [0, 1.2, 1],
-               duration: 400,
-               delay: 600,
-               ease: 'outElastic(1, .5)',
-               onComplete: function() {
-                 anime.animate(dot, {
-                   scale: [1, 1.3, 1],
-                   duration: 1000,
-                   ease: 'inOutSine',
-                   loop: true
-                 });
-               }
              });
            }
 

@@ -5,6 +5,19 @@
 <p class="big-text">servers can still be very useful</p>
 
 <div class="server-needs-grid">
+  <!-- Always-on availability: clock -->
+  <div class="server-need fragment" id="need-availability">
+    <svg class="need-icon" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+      <!-- Clock -->
+      <circle cx="60" cy="40" r="28" fill="none" stroke="currentColor" stroke-width="2"/>
+      <!-- Hour hand (shorter, slower) -->
+      <line class="clock-hour" x1="60" y1="40" x2="60" y2="28" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform-origin: 60px 40px;"/>
+      <!-- Minute hand (longer, faster) -->
+      <line class="clock-minute" x1="60" y1="40" x2="73" y2="50" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform-origin: 60px 40px;"/>
+    </svg>
+    <span>Always-on availability</span>
+  </div>
+
   <!-- NAT traversal: devices behind firewalls with relay server -->
   <div class="server-need fragment" id="need-nat">
     <svg class="need-icon" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
@@ -33,32 +46,6 @@
       <path class="nat-arrow-out-right" d="M88 45 L76 45" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
     </svg>
     <span>NAT traversal</span>
-  </div>
-
-  <!-- Always-on availability: clock -->
-  <div class="server-need fragment" id="need-availability">
-    <svg class="need-icon" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-      <!-- Clock -->
-      <circle cx="60" cy="40" r="28" fill="none" stroke="currentColor" stroke-width="2"/>
-      <path class="clock-hands" d="M60 20 L60 40 L73 50" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform-origin: 60px 40px;"/>
-    </svg>
-    <span>Always-on availability</span>
-  </div>
-
-  <!-- Sharing with others: people connected -->
-  <div class="server-need fragment" id="need-sharing">
-    <svg class="need-icon" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-      <!-- Person 1 -->
-      <circle cx="30" cy="25" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
-      <path d="M15 55 Q15 40 30 40 Q45 40 45 55" fill="none" stroke="currentColor" stroke-width="2"/>
-      <!-- Person 2 -->
-      <circle cx="90" cy="25" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
-      <path d="M75 55 Q75 40 90 40 Q105 40 105 55" fill="none" stroke="currentColor" stroke-width="2"/>
-      <!-- Connection lines -->
-      <path class="connection-line" d="M45 30 L75 30" stroke="currentColor" stroke-width="2" stroke-dasharray="4 2"/>
-      <circle class="connection-dot" cx="60" cy="30" r="4" fill="currentColor"/>
-    </svg>
-    <span>Sharing with others</span>
   </div>
 
   <!-- Backup & redundancy: stacked copies -->
