@@ -210,8 +210,58 @@
              ],
          });
 
+         // Animate switch servers illustration
+         function animateSwitchServers() {
+           const illustration = document.querySelector('#switch-servers-illustration');
+           if (!illustration || illustration.dataset.animated) return;
+           illustration.dataset.animated = 'true';
+
+           const switchingLine = illustration.querySelector('.switching-line');
+           const leds = illustration.querySelectorAll('.led');
+
+           // Blink LEDs randomly
+           leds.forEach(function(led) {
+             anime.animate(led, {
+               opacity: [1, 0.3, 1],
+               duration: function() { return 300 + Math.random() * 400; },
+               delay: function() { return Math.random() * 1000; },
+               loop: true,
+               ease: 'inOutSine'
+             });
+           });
+
+           anime.createTimeline({ loop: true, loopDelay: 2000 })
+             // Start connected to Server A
+             .add(switchingLine, {
+               x1: 150,
+               duration: 0
+             }, 0)
+             // Switch to Server B
+             .add(switchingLine, {
+               x1: 450,
+               duration: 800,
+               ease: 'inOutQuad'
+             }, 1000)
+             // Hold at Server B
+             .add(switchingLine, {
+               x1: 450,
+               duration: 0
+             }, 2500)
+             // Switch back to Server A
+             .add(switchingLine, {
+               x1: 150,
+               duration: 800,
+               ease: 'inOutQuad'
+             }, 3500);
+         }
+
          // Trigger animations on slide change
          Reveal.on('slidechanged', function(event) {
+           // Animate switch servers illustration
+           if (event.currentSlide.querySelector('#switch-servers-illustration')) {
+             animateSwitchServers();
+           }
+
            // Animate sponsor logos when that slide appears
            if (event.currentSlide.querySelector('.sponsor-logos')) {
              animateSponsorLogos();
