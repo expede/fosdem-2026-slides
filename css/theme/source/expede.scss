@@ -127,6 +127,41 @@ p, li {
   box-shadow: none !important;
 }
 
+// Centered slide layout
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+// Giant thank you text
+.thank-you {
+  font-size: 8rem !important;
+  font-weight: 900 !important;
+  margin-bottom: 1rem !important;
+}
+
+// Icons inline with text
+.github-icon,
+.link-icon {
+  height: 1em;
+  width: auto;
+  vertical-align: -0.1em;
+  margin-right: 0.3em;
+}
+
+// Progress bar
+.reveal .progress {
+  height: 8px;
+  background: rgba($slate, 0.2);
+
+  span {
+    background: $yellow;
+  }
+}
+
 // Title slide - logo left, text right following diamond
 .titlescreen {
   display: flex;
