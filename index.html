@@ -393,6 +393,18 @@
                  ease: 'outQuad'
                }, 2200);
            }
+
+           // "or both" - fade and drift from above
+           if (event.fragment.id === 'or-both') {
+             event.fragment.style.transform = 'translateY(-1lh)';
+             event.fragment.style.opacity = '0';
+             anime.animate(event.fragment, {
+               translateY: [ '-2lh', '0' ],
+               opacity: 1,
+               duration: 500,
+               ease: 'outQuad'
+             });
+           }
          });
 
         </script>

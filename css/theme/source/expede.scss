@@ -177,6 +177,11 @@ p, li {
   margin-right: 0.3em;
 }
 
+// Disable default fragment transition for custom animations
+#or-both {
+  transition: none !important;
+}
+
 // Progress bar
 .reveal .progress {
   height: 8px;
