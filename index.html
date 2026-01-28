@@ -217,6 +217,17 @@
            if (event.currentSlide.querySelector('.sponsor-logos')) {
              animateSponsorLogos();
            }
+
+           // Reset and trigger em highlight animations
+           // Remove class from all ems first
+           document.querySelectorAll('em.highlight-active').forEach(function(em) {
+             em.classList.remove('highlight-active');
+             em.style.backgroundSize = '0% 100%';
+           });
+           // Add class to ems on current slide
+           event.currentSlide.querySelectorAll('em').forEach(function(em) {
+             em.classList.add('highlight-active');
+           });
          });
 
          // Animate "problems" word with clone effect when trigger fragment appears
