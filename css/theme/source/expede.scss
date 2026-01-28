@@ -91,19 +91,31 @@ html {
 // Yellow highlight for <em> - animates in from left when slide is active
 em {
   font-style: normal;
-  background: linear-gradient(to top, transparent 10%, $yellow 10%, $yellow 45%, transparent 45%);
-  background-size: 0% 100%;
-  background-repeat: no-repeat;
-  background-position: left;
+  position: relative;
+  z-index: 1;
 }
 
-em.highlight-active {
+em::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 50%;
+  bottom: 10%;
+  background: $yellow;
+  z-index: -1;
+  transform: rotate(-1deg);
+  transform-origin: left;
+  width: 0%;
+}
+
+em.highlight-active::before {
   animation: highlight-draw 0.6s ease-out 0.3s forwards;
 }
 
 @keyframes highlight-draw {
   to {
-    background-size: 100% 100%;
+    width: calc(100% + 4px);
   }
 }
 
