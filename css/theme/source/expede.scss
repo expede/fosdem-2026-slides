@@ -53,7 +53,7 @@ html {
   mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r=".5"/><circle cx="3" cy="3" r=".5"/></svg>');
   mask-size: 14px 14px;
   background: $slate;
-  opacity: 0.12;
+  opacity: 0.25;
   pointer-events: none;
   z-index: 1;
 }
@@ -68,7 +68,7 @@ html {
   mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r=".4"/><circle cx="3" cy="3" r=".4"/></svg>');
   mask-size: 14px 14px;
   background: $slate;
-  opacity: 0.12;
+  opacity: 0.25;
   pointer-events: none;
   z-index: 1;
 }
@@ -83,7 +83,7 @@ html {
   mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r=".28"/><circle cx="3" cy="3" r=".28"/></svg>');
   mask-size: 14px 14px;
   background: $slate;
-  opacity: 0.12;
+  opacity: 0.25;
   pointer-events: none;
   z-index: 1;
 }
