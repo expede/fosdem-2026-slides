@@ -238,6 +238,53 @@
              });
            });
 
+           // P2P connection animation - cycles between different device pairs
+           const p2pPath = illustration.querySelector('#p2p-connection');
+           // Device positions: laptop1=100, phone1=200, laptop2=300, phone2=400, laptop3=500
+           const connections = [
+             { start: 100, end: 500, ctrl: 300 },  // laptop to laptop (far)
+             { start: 200, end: 400, ctrl: 300 },  // phone to phone
+             { start: 100, end: 200, ctrl: 150 },  // laptop to phone (left)
+             { start: 400, end: 500, ctrl: 450 },  // phone to laptop (right)
+             { start: 200, end: 300, ctrl: 250 },  // phone to center laptop
+             { start: 300, end: 400, ctrl: 350 },  // center laptop to phone
+             { start: 100, end: 300, ctrl: 200 },  // far left to center
+             { start: 300, end: 500, ctrl: 400 },  // center to far right
+           ];
+           let connIndex = 0;
+
+           function animateP2P() {
+             const conn = connections[connIndex];
+             const curveDepth = Math.abs(conn.end - conn.start) * 0.15 + 20;
+             const newPath = `M${conn.start} 215 Q${conn.ctrl} ${215 + curveDepth} ${conn.end} 215`;
+
+             // Fade out, change path, fade in
+             anime.animate(p2pPath, {
+               opacity: [1, 0],
+               strokeDashoffset: [0, 100],
+               duration: 300,
+               ease: 'inQuad',
+               onComplete: function() {
+                 p2pPath.setAttribute('d', newPath);
+                 anime.animate(p2pPath, {
+                   opacity: [0, 1],
+                   strokeDashoffset: [100, 0],
+                   duration: 400,
+                   ease: 'outQuad'
+                 });
+               }
+             });
+
+             connIndex = (connIndex + 1) % connections.length;
+           }
+
+           // Set up dash for animation
+           p2pPath.setAttribute('stroke-dasharray', '500');
+           p2pPath.setAttribute('stroke-dashoffset', '0');
+
+           // Cycle connections
+           setInterval(animateP2P, 1500);
+
            anime.createTimeline({ loop: true, loopDelay: 2000 })
              // Start connected to Server A
              .add(switchingLine, {

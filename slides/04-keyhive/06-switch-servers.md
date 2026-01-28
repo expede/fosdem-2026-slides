@@ -2,9 +2,9 @@
 
 <p class="big-text"><em>You</em> are the authority</p>
 <p class="big-text">Switch servers, keep access</p>
-<p class="big-text">Route aroudn them entirely</p>
+<p class="big-text">Route around them entirely</p>
 
-<svg id="switch-servers-illustration" width="800" height="320" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" style="margin-top: 2rem;">
+<svg id="switch-servers-illustration" width="800" height="380" viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" style="margin-top: 2rem;">
 <g class="connections" stroke="#ccc" stroke-width="2" fill="none">
 <line x1="150" y1="85" x2="100" y2="180"/>
 <line x1="150" y1="85" x2="200" y2="180"/>
@@ -12,7 +12,7 @@
 <line x1="450" y1="85" x2="500" y2="180"/>
 <line class="switching-line" x1="150" y1="85" x2="300" y2="180" stroke="#fc3" stroke-width="3"/>
 </g>
-<path d="M100 215 Q300 245 500 215" stroke="#ccc" stroke-width="2" fill="none"/>
+<path id="p2p-connection" d="M100 215 Q300 245 500 215" stroke="#fc3" stroke-width="3" fill="none" stroke-linecap="round"/>
 <g class="traveling-key" style="opacity: 0;">
 <circle cx="300" cy="175" r="8" fill="#fc3" stroke="#222" stroke-width="1.5"/>
 <rect x="298" y="182" width="4" height="10" fill="#222"/>
