@@ -218,6 +218,7 @@
 
            const switchingLine = illustration.querySelector('.switching-line');
            const leds = illustration.querySelectorAll('.led');
+           const travelingKey = illustration.querySelector('.traveling-key');
 
            // Blink LEDs randomly
            leds.forEach(function(led) {
@@ -236,23 +237,67 @@
                x1: 150,
                duration: 0
              }, 0)
+             // Key appears and travels to Server B
+             .add(travelingKey, {
+               opacity: [0, 1],
+               duration: 100
+             }, 900)
+             .add(travelingKey, {
+               translateX: [0, 150],
+               translateY: [0, -110],
+               duration: 1200,
+               ease: 'inOutQuad'
+             }, 1000)
              // Switch to Server B
              .add(switchingLine, {
                x1: 450,
                duration: 800,
                ease: 'inOutQuad'
              }, 1000)
+             // Key fades out
+             .add(travelingKey, {
+               opacity: [1, 0],
+               duration: 200
+             }, 2100)
+             // Reset key position
+             .add(travelingKey, {
+               translateX: 0,
+               translateY: 0,
+               duration: 0
+             }, 2400)
              // Hold at Server B
              .add(switchingLine, {
                x1: 450,
                duration: 0
              }, 2500)
+             // Key appears and travels to Server A
+             .add(travelingKey, {
+               opacity: [0, 1],
+               duration: 100
+             }, 3400)
+             .add(travelingKey, {
+               translateX: [0, -150],
+               translateY: [0, -110],
+               duration: 1200,
+               ease: 'inOutQuad'
+             }, 3500)
              // Switch back to Server A
              .add(switchingLine, {
                x1: 150,
                duration: 800,
                ease: 'inOutQuad'
-             }, 3500);
+             }, 3500)
+             // Key fades out
+             .add(travelingKey, {
+               opacity: [1, 0],
+               duration: 200
+             }, 4600)
+             // Reset key position
+             .add(travelingKey, {
+               translateX: 0,
+               translateY: 0,
+               duration: 0
+             }, 4900);
          }
 
          // Trigger animations on slide change
