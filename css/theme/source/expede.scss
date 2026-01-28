@@ -196,6 +196,12 @@ p, li {
   font-weight: 900;
 }
 
+// Outline-only text (transparent fill with stroke)
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 2px $slate;
+}
+
 // Section title logo
 .section-logo {
   width: 200px;

@@ -367,11 +367,66 @@
              }, 4900);
          }
 
+         function animateGrandVision() {
+           const textEl = document.querySelector('#grand-vision-text');
+           if (!textEl || textEl.dataset.animated) return;
+           textEl.dataset.animated = 'true';
+
+           // Split text into characters
+           const { chars } = anime.splitText(textEl, { chars: true });
+
+           // Wave animation - gentle wave back and forth
+           anime.animate(chars, {
+             translateY: [0, -10, 0],
+             rotate: [0, -3, 0, 3, 0],
+             duration: 1200,
+             delay: anime.stagger(80, { from: 'first' }),
+             loop: true,
+             loopDelay: 0,
+             alternate: true,
+             ease: 'inOutSine'
+           });
+
+           // Create sparkle container (just the "Grand Vision" text)
+           textEl.style.position = 'relative';
+           textEl.style.display = 'inline-block';
+           textEl.style.color = '#fc3';
+           textEl.style.webkitTextStroke = '6px #222';
+           textEl.style.paintOrder = 'stroke fill';
+
+           // Generate sparkles
+           function createSparkle() {
+             const sparkle = document.createElement('span');
+             sparkle.innerHTML = '✦';
+             sparkle.style.cssText = 'position: absolute; pointer-events: none; font-size: 0.5em; opacity: 0; color: #fc3; -webkit-text-stroke: 0;';
+             sparkle.style.left = (Math.random() * 100) + '%';
+             sparkle.style.top = (Math.random() * 100 - 50) + '%';
+             textEl.appendChild(sparkle);
+
+             anime.animate(sparkle, {
+               opacity: [0, 0.8, 0],
+               scale: [0.5, 1.2, 0.5],
+               translateY: [0, -15],
+               duration: 1200,
+               ease: 'outQuad',
+               onComplete: function() { sparkle.remove(); }
+             });
+           }
+
+           // Spawn sparkles periodically
+           setInterval(createSparkle, 400);
+         }
+
          // Trigger animations on slide change
          Reveal.on('slidechanged', function(event) {
            // Animate switch servers illustration
            if (event.currentSlide.querySelector('#switch-servers-illustration')) {
              animateSwitchServers();
+           }
+
+           // Animate grand vision text
+           if (event.currentSlide.querySelector('#grand-vision-text')) {
+             animateGrandVision();
            }
 
            // Animate sponsor logos when that slide appears

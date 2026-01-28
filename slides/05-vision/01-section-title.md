@@ -1,5 +1,5 @@
 <div class="titlescreen">
 
-# 🌈The Grand Vision🚀
+<h1>The <span id="grand-vision-text">Grand Vision</span></h1>
 
 </div>

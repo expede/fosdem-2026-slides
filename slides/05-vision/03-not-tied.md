@@ -2,8 +2,8 @@
 
 # Not Tied To
 
+<p class="fragment">Any one app</p>
 <p class="fragment">Any one company</p>
-<p class="fragment">Any one host</p>
-<p class="fragment">Any one enthusiast willing to self-host</p>
+<p class="fragment">Any one host (no matter how enthusiastic)</p>
 
 </div>
