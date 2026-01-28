@@ -178,8 +178,29 @@ p, li {
 }
 
 // Disable default fragment transition for custom animations
-#or-both {
+.reveal .slides section .fragment {
   transition: none !important;
+}
+
+.reveal .slides section .fragment.visible {
+  opacity: 1;
+}
+
+// Quote marks that appear inline
+.quote-mark {
+  display: inline;
+}
+
+// Heavy font weight emphasis
+.heavy {
+  font-weight: 900;
+}
+
+// Section title logo
+.section-logo {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 1rem;
 }
 
 // Progress bar

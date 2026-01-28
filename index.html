@@ -232,6 +232,19 @@
 
          // Animate "problems" word with clone effect when trigger fragment appears
          Reveal.on('fragmentshown', function(event) {
+           // Default subtle entrance for all text fragments
+           const customAnimated = ['trigger-problems-animation', 'need-nat', 'need-availability', 'need-backup', 'or-both'];
+           if (!customAnimated.includes(event.fragment.id) && !event.fragment.classList.contains('server-need')) {
+             event.fragment.style.opacity = '0';
+             event.fragment.style.transform = 'translateY(10px)';
+             anime.animate(event.fragment, {
+               translateY: 0,
+               opacity: 1,
+               duration: 600,
+               ease: 'outCubic'
+             });
+           }
+
            if (event.fragment.id === 'trigger-problems-animation') {
              const problemsWord = document.querySelector('#problems-word');
              if (!problemsWord || problemsWord.dataset.animated) return;

@@ -2,12 +2,8 @@
 
 # Enshittification Risk
 
-<ul>
-  <li class="fragment">Shut down</li>
-  <li class="fragment">Get acquired</li>
-  <li class="fragment">Start charging rent</li>
-  <li class="fragment">Lock you out</li>
-  <li class="fragment">Mine your metadata</li>
-</ul>
-
-</div>
+<p class="fragment">Shut down</p>
+<p class="fragment">Get acquired</p>
+<p class="fragment">Start charging rent</p>
+<p class="fragment">Lock you out(!)</p>
+<p class="fragment">Mine your data</p>
