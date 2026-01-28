@@ -4,6 +4,6 @@
 
 <p class="big-text">Data lives on your device</p>
 <p class="big-text">Works offline</p>
-<p class="big-text">Syncs when connected</p>
+<p class="big-text">Syncs when it can</p>
 
 </div>

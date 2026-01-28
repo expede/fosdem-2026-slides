@@ -466,20 +466,86 @@
              if (!problemsWord || problemsWord.dataset.animated) return;
              problemsWord.dataset.animated = 'true';
 
-             // Use anime.js splitText with clone parameter
-             const { chars } = anime.splitText(problemsWord, {
-               chars: {
-                 wrap: 'clip',
-                 clone: 'bottom'
-               }
-             });
+             // Glitch effect - RGB split + jitter
+             problemsWord.style.position = 'relative';
+             problemsWord.style.display = 'inline-block';
 
-             anime.createTimeline({ loop: true, loopDelay: 500 })
-               .add(chars, {
-                 y: '-100%',
-                 duration: 750,
-                 ease: 'inOut(2)'
-               }, anime.stagger(50, { from: 'center' }));
+             // Create glitch layers
+             const text = problemsWord.textContent;
+             problemsWord.innerHTML = `<span class="glitch-base">${text}</span><span class="glitch-r">${text}</span><span class="glitch-b">${text}</span>`;
+
+             const base = problemsWord.querySelector('.glitch-base');
+             const glitchR = problemsWord.querySelector('.glitch-r');
+             const glitchB = problemsWord.querySelector('.glitch-b');
+
+             // Style the layers
+             [base, glitchR, glitchB].forEach(el => {
+               el.style.display = 'inline-block';
+             });
+             glitchR.style.position = 'absolute';
+             glitchR.style.left = '0';
+             glitchR.style.top = '0';
+             glitchR.style.color = '#f00';
+             glitchR.style.mixBlendMode = 'multiply';
+             glitchR.style.opacity = '0';
+
+             glitchB.style.position = 'absolute';
+             glitchB.style.left = '0';
+             glitchB.style.top = '0';
+             glitchB.style.color = '#00f';
+             glitchB.style.mixBlendMode = 'multiply';
+             glitchB.style.opacity = '0';
+
+             // Glitch animation loop with randomness
+             function doGlitch() {
+               const intensity = 1 + Math.random() * 2;
+               const duration = 80 + Math.random() * 100;
+
+               // Red layer glitch
+               anime.animate(glitchR, {
+                 opacity: [0, 0.9, 0.4, 0],
+                 translateX: [0, -6 * intensity, 4 * intensity, -2, 0],
+                 translateY: [0, 2 * Math.random(), -1, 0],
+                 duration: duration,
+                 ease: 'steps(4)'
+               });
+               // Blue layer glitch
+               anime.animate(glitchB, {
+                 opacity: [0, 0.9, 0.5, 0],
+                 translateX: [0, 6 * intensity, -3 * intensity, 1, 0],
+                 translateY: [0, -2 * Math.random(), 1, 0],
+                 duration: duration,
+                 ease: 'steps(4)'
+               });
+               // Base jitter
+               anime.animate(base, {
+                 translateX: [0, -3 * intensity, 5 * intensity, -2, 0],
+                 translateY: [0, 1, -1, 0],
+                 skewX: [0, 4 * intensity, -3, 1, 0],
+                 scaleX: [1, 1.02, 0.98, 1],
+                 duration: duration,
+                 ease: 'steps(5)'
+               });
+             }
+
+             // Initial glitch burst
+             doGlitch();
+             setTimeout(doGlitch, 80);
+             setTimeout(doGlitch, 150);
+             setTimeout(doGlitch, 220);
+             setTimeout(doGlitch, 300);
+
+             // Erratic random glitches with varying intervals
+             function scheduleGlitch() {
+               const delay = 100 + Math.random() * 300;
+               setTimeout(() => {
+                 doGlitch();
+                 if (Math.random() > 0.5) setTimeout(doGlitch, 50); // double glitch
+                 if (Math.random() > 0.8) setTimeout(doGlitch, 100); // triple glitch
+                 scheduleGlitch();
+               }, delay);
+             }
+             scheduleGlitch();
            }
 
            // NAT traversal - arrows pulse in sequence: top-left, top-right, bottom-right, bottom-left
