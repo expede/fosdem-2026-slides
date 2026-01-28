@@ -307,44 +307,87 @@
              });
            }
 
-           // Backup & redundancy - docs stack in, checkmark draws
+           // Backup & redundancy - server pushes docs, then catches fire
            if (event.fragment.id === 'need-backup') {
              const doc1 = event.fragment.querySelector('.doc-1');
              const doc2 = event.fragment.querySelector('.doc-2');
              const doc3 = event.fragment.querySelector('.doc-3');
+             const docFlying = event.fragment.querySelector('.doc-flying');
+             const server = event.fragment.querySelector('.backup-server');
+             const fire = event.fragment.querySelector('.server-fire');
              const checkmark = event.fragment.querySelector('.checkmark');
 
              const checkDrawable = anime.svg.createDrawable(checkmark);
-             checkmark.style.opacity = '0';
 
              anime.createTimeline()
-               .add(doc1, {
-                 translateY: [-20, 0],
-                 opacity: [0, 1],
-                 duration: 300,
-                 ease: 'outQuad'
+               // First doc flies to stack
+               .add(docFlying, {
+                 translateX: [0, 40],
+                 duration: 400,
+                 ease: 'inOutQuad'
                }, 0)
+               .add(doc1, {
+                 opacity: [0, 1],
+                 duration: 100
+               }, 400)
+               // Reset flying doc, send second
+               .add(docFlying, {
+                 translateX: [0, 45],
+                 duration: 400,
+                 ease: 'inOutQuad'
+               }, 500)
                .add(doc2, {
-                 translateY: [-20, 0],
                  opacity: [0, 1],
-                 duration: 300,
-                 ease: 'outQuad'
-               }, 150)
+                 duration: 100
+               }, 900)
+               // Reset flying doc, send third
+               .add(docFlying, {
+                 translateX: [0, 50],
+                 duration: 400,
+                 ease: 'inOutQuad'
+               }, 1000)
                .add(doc3, {
-                 translateY: [-20, 0],
                  opacity: [0, 1],
-                 duration: 300,
-                 ease: 'outQuad'
-               }, 300)
+                 duration: 100
+               }, 1400)
+               // Hide flying doc
+               .add(docFlying, {
+                 opacity: [1, 0],
+                 duration: 100
+               }, 1400)
+               // Server catches fire!
+               .add(fire, {
+                 opacity: [0, 1],
+                 duration: 200
+               }, 1600)
+               .add(fire, {
+                 translateY: [0, -3, 0, -2, 0],
+                 scale: [1, 1.2, 0.9, 1.1, 1],
+                 duration: 800,
+                 loop: true
+               }, 1600)
+               // Server shakes and falls
+               .add(server, {
+                 translateX: [0, -2, 2, -2, 2, 0],
+                 duration: 300
+               }, 1600)
+               .add(server, {
+                 rotate: [0, 15],
+                 translateY: [0, 10],
+                 opacity: [1, 0.5],
+                 duration: 800,
+                 ease: 'inQuad'
+               }, 1900)
+               // Checkmark appears
                .add(checkmark, {
                  opacity: [0, 1],
                  duration: 100
-               }, 500)
+               }, 2500)
                .add(checkDrawable, {
                  draw: ['0 0', '0 1'],
                  duration: 400,
                  ease: 'outQuad'
-               }, 500);
+               }, 2500);
            }
          });
 

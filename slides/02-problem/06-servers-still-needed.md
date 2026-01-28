@@ -48,15 +48,30 @@
     <span>NAT traversal</span>
   </div>
 
-  <!-- Backup & redundancy: stacked copies -->
+  <!-- Backup & redundancy: server pushes backups then dies -->
   <div class="server-need fragment" id="need-backup">
-    <svg class="need-icon" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-      <!-- Stacked documents -->
-      <rect class="doc doc-1" x="35" y="10" width="40" height="50" rx="2" fill="#fcfcfc" stroke="currentColor" stroke-width="2"/>
-      <rect class="doc doc-2" x="40" y="15" width="40" height="50" rx="2" fill="#fcfcfc" stroke="currentColor" stroke-width="2"/>
-      <rect class="doc doc-3" x="45" y="20" width="40" height="50" rx="2" fill="#fcfcfc" stroke="currentColor" stroke-width="2"/>
+    <svg class="need-icon" viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg">
+      <!-- Server on left -->
+      <g class="backup-server">
+        <rect class="server-body" x="5" y="20" width="24" height="40" rx="2" fill="#fcfcfc" stroke="currentColor" stroke-width="2"/>
+        <line x1="9" y1="28" x2="25" y2="28" stroke="currentColor" stroke-width="2"/>
+        <line x1="9" y1="36" x2="25" y2="36" stroke="currentColor" stroke-width="2"/>
+        <line x1="9" y1="44" x2="25" y2="44" stroke="currentColor" stroke-width="2"/>
+        <circle class="server-led" cx="21" cy="52" r="2" fill="currentColor"/>
+      </g>
+      <!-- Fire/smoke (hidden initially) -->
+      <g class="server-fire" style="opacity: 0;">
+        <path d="M10 20 Q5 10 12 5 Q15 12 17 5 Q22 10 17 20" fill="#fc3" stroke="#e44" stroke-width="1"/>
+        <path d="M20 22 Q18 15 24 12 Q26 18 28 12 Q32 17 27 22" fill="#fc3" stroke="#e44" stroke-width="1"/>
+      </g>
+      <!-- Stacked documents on right -->
+      <rect class="doc doc-1" x="70" y="10" width="40" height="50" rx="2" fill="#fcfcfc" stroke="currentColor" stroke-width="2" style="opacity: 0;"/>
+      <rect class="doc doc-2" x="75" y="15" width="40" height="50" rx="2" fill="#fcfcfc" stroke="currentColor" stroke-width="2" style="opacity: 0;"/>
+      <rect class="doc doc-3" x="80" y="20" width="40" height="50" rx="2" fill="#fcfcfc" stroke="currentColor" stroke-width="2" style="opacity: 0;"/>
+      <!-- Document being pushed (starts at server) -->
+      <rect class="doc-flying" x="30" y="25" width="30" height="40" rx="2" fill="#fcfcfc" stroke="currentColor" stroke-width="2"/>
       <!-- Checkmark -->
-      <path class="checkmark" d="M55 45 L62 52 L75 35" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="checkmark" d="M90 45 L97 52 L110 35" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0;"/>
     </svg>
     <span>Backup &amp; redundancy</span>
   </div>
