@@ -1,7 +1,7 @@
 <div class="myslide vcenter">
 
 <p class="big-text">Capabilities <em>compose</em> and <em>extend</em></p>
-<p class="big-text">Model ACLs, RBAC, and more</p>
+<p class="big-text">Model ACLs, RBAC, sandboxing, and so on</p>
 
 <svg id="caps-diagram" width="1094" height="594" viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" style="margin-top: 2rem;">
 <defs>

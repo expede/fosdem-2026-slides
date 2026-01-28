@@ -1,6 +1,6 @@
 <div class="myslide vcenter">
 
-<p class="big-text">RBAC-style delegation</p>
+<p class="big-text">RBAC-style delegation & file systems</p>
 
 <svg id="rbac-diagram" width="1094" height="594" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" style="margin-top: 1rem;">
 <defs>
@@ -9,7 +9,8 @@
 </marker>
 </defs>
 
-<line x1="114" y1="62" x2="179" y2="140" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
+<line x1="95" y1="62" x2="108" y2="82" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
+<line x1="130" y1="118" x2="172" y2="148" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
 <line x1="200" y1="67" x2="200" y2="133" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
 <line x1="176" y1="186" x2="77" y2="271" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
 <line x1="186" y1="194" x2="150" y2="265" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
@@ -23,8 +24,11 @@
 <line x1="668" y1="63" x2="614" y2="143" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
 <line x1="576" y1="175" x2="340" y2="276" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
 
-<circle cx="100" cy="45" r="22" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
-<text x="100" y="52" text-anchor="middle" font-size="22" fill="#222">📄</text>
+<circle cx="80" cy="50" r="16" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="80" y="56" text-anchor="middle" font-size="16" fill="#222">📄</text>
+
+<circle cx="120" cy="100" r="18" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="120" y="107" text-anchor="middle" font-size="18" fill="#222">📁</text>
 
 <circle cx="200" cy="45" r="22" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
 <text x="200" y="52" text-anchor="middle" font-size="22" fill="#222">📄</text>

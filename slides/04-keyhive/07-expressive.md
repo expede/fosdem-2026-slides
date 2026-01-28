@@ -1,7 +1,7 @@
 <div class="myslide vcenter">
 
 <blockquote style="font-size: 1.1rem; color: #888; font-style: italic; margin-bottom: 2rem; border: none; box-shadow: none;">
-The limits of my language mean the limits of my world<br/>
+"The limits of my language mean the limits of my world"<br/>
 — Ludwig Wittgenstein
 </blockquote>
 
