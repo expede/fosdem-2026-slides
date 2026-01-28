@@ -54,10 +54,18 @@
       <!-- Server on left -->
       <g class="backup-server">
         <rect class="server-body" x="5" y="20" width="24" height="40" rx="2" fill="#fcfcfc" stroke="currentColor" stroke-width="2"/>
-        <line x1="9" y1="28" x2="25" y2="28" stroke="currentColor" stroke-width="2"/>
-        <line x1="9" y1="36" x2="25" y2="36" stroke="currentColor" stroke-width="2"/>
-        <line x1="9" y1="44" x2="25" y2="44" stroke="currentColor" stroke-width="2"/>
-        <circle class="server-led" cx="21" cy="52" r="2" fill="currentColor"/>
+        <!-- Happy eyes -->
+        <circle class="server-eye-left" cx="12" cy="35" r="2" fill="currentColor"/>
+        <circle class="server-eye-right" cx="22" cy="35" r="2" fill="currentColor"/>
+        <!-- X eyes (hidden initially) -->
+        <g class="server-x-eyes" style="opacity: 0;">
+          <path d="M9 32 L15 38 M15 32 L9 38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M19 32 L25 38 M25 32 L19 38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <!-- Happy smile -->
+        <path class="server-smile" d="M11 45 Q17 50 23 45" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <!-- Sad mouth (hidden initially) -->
+        <path class="server-sad" d="M11 48 Q17 43 23 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="opacity: 0;"/>
       </g>
       <!-- Fire/smoke (hidden initially) -->
       <g class="server-fire" style="opacity: 0;">

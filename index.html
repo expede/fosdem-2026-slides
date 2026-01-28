@@ -315,6 +315,11 @@
              const docFlying = event.fragment.querySelector('.doc-flying');
              const server = event.fragment.querySelector('.backup-server');
              const fire = event.fragment.querySelector('.server-fire');
+             const eyeLeft = event.fragment.querySelector('.server-eye-left');
+             const eyeRight = event.fragment.querySelector('.server-eye-right');
+             const xEyes = event.fragment.querySelector('.server-x-eyes');
+             const smile = event.fragment.querySelector('.server-smile');
+             const sad = event.fragment.querySelector('.server-sad');
              const checkmark = event.fragment.querySelector('.checkmark');
 
              const checkDrawable = anime.svg.createDrawable(checkmark);
@@ -366,28 +371,27 @@
                  duration: 800,
                  loop: true
                }, 1600)
-               // Server shakes and falls
+               // Server shakes
                .add(server, {
                  translateX: [0, -2, 2, -2, 2, 0],
                  duration: 300
                }, 1600)
-               .add(server, {
-                 rotate: [0, 15],
-                 translateY: [0, 10],
-                 opacity: [1, 0.5],
-                 duration: 800,
-                 ease: 'inQuad'
-               }, 1900)
+               // Happy face becomes X_X
+               .add(eyeLeft, { opacity: [1, 0], duration: 100 }, 1600)
+               .add(eyeRight, { opacity: [1, 0], duration: 100 }, 1600)
+               .add(xEyes, { opacity: [0, 1], duration: 100 }, 1600)
+               .add(smile, { opacity: [1, 0], duration: 100 }, 1600)
+               .add(sad, { opacity: [0, 1], duration: 100 }, 1600)
                // Checkmark appears
                .add(checkmark, {
                  opacity: [0, 1],
                  duration: 100
-               }, 2500)
+               }, 2200)
                .add(checkDrawable, {
                  draw: ['0 0', '0 1'],
                  duration: 400,
                  ease: 'outQuad'
-               }, 2500);
+               }, 2200);
            }
          });
 
