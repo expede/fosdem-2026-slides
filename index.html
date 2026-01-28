@@ -218,7 +218,14 @@
 
            const switchingLine = illustration.querySelector('.switching-line');
            const leds = illustration.querySelectorAll('.led');
+           const ledsA = illustration.querySelectorAll('.server-a .led');
+           const ledsB = illustration.querySelectorAll('.server-b .led');
            const travelingKey = illustration.querySelector('.traveling-key');
+           const serverACheck = illustration.querySelector('.server-a-check');
+           const serverAX = illustration.querySelector('.server-a-x');
+           const serverBCheck = illustration.querySelector('.server-b-check');
+           const serverBX = illustration.querySelector('.server-b-x');
+           const travelingX = illustration.querySelector('.traveling-x');
 
            // Blink LEDs randomly
            leds.forEach(function(led) {
@@ -237,13 +244,23 @@
                x1: 150,
                duration: 0
              }, 0)
-             // Key appears and travels to Server B
+             // Key appears and travels to Server B, X travels to Server A
              .add(travelingKey, {
+               opacity: [0, 1],
+               duration: 100
+             }, 900)
+             .add(travelingX, {
                opacity: [0, 1],
                duration: 100
              }, 900)
              .add(travelingKey, {
                translateX: [0, 150],
+               translateY: [0, -110],
+               duration: 1200,
+               ease: 'inOutQuad'
+             }, 1000)
+             .add(travelingX, {
+               translateX: [0, -150],
                translateY: [0, -110],
                duration: 1200,
                ease: 'inOutQuad'
@@ -254,13 +271,33 @@
                duration: 800,
                ease: 'inOutQuad'
              }, 1000)
-             // Key fades out
+             // Key and X fade out, Server A LEDs turn red
              .add(travelingKey, {
                opacity: [1, 0],
                duration: 200
              }, 2100)
-             // Reset key position
+             .add(travelingX, {
+               opacity: [1, 0],
+               duration: 200
+             }, 2100)
+             .add({
+               duration: 1,
+               onComplete: function() {
+                 ledsA.forEach(function(led) { led.setAttribute('fill', '#e44'); });
+                 ledsB.forEach(function(led) { led.setAttribute('fill', '#4a4'); });
+                 serverACheck.style.opacity = '0';
+                 serverAX.style.opacity = '1';
+                 serverBCheck.style.opacity = '1';
+                 serverBX.style.opacity = '0';
+               }
+             }, 2100)
+             // Reset key and X position
              .add(travelingKey, {
+               translateX: 0,
+               translateY: 0,
+               duration: 0
+             }, 2400)
+             .add(travelingX, {
                translateX: 0,
                translateY: 0,
                duration: 0
@@ -270,13 +307,23 @@
                x1: 450,
                duration: 0
              }, 2500)
-             // Key appears and travels to Server A
+             // Key appears and travels to Server A, X travels to Server B
              .add(travelingKey, {
+               opacity: [0, 1],
+               duration: 100
+             }, 3400)
+             .add(travelingX, {
                opacity: [0, 1],
                duration: 100
              }, 3400)
              .add(travelingKey, {
                translateX: [0, -150],
+               translateY: [0, -110],
+               duration: 1200,
+               ease: 'inOutQuad'
+             }, 3500)
+             .add(travelingX, {
+               translateX: [0, 150],
                translateY: [0, -110],
                duration: 1200,
                ease: 'inOutQuad'
@@ -287,13 +334,33 @@
                duration: 800,
                ease: 'inOutQuad'
              }, 3500)
-             // Key fades out
+             // Key and X fade out, Server B LEDs turn red
              .add(travelingKey, {
                opacity: [1, 0],
                duration: 200
              }, 4600)
-             // Reset key position
+             .add(travelingX, {
+               opacity: [1, 0],
+               duration: 200
+             }, 4600)
+             .add({
+               duration: 1,
+               onComplete: function() {
+                 ledsB.forEach(function(led) { led.setAttribute('fill', '#e44'); });
+                 ledsA.forEach(function(led) { led.setAttribute('fill', '#4a4'); });
+                 serverBCheck.style.opacity = '0';
+                 serverBX.style.opacity = '1';
+                 serverACheck.style.opacity = '1';
+                 serverAX.style.opacity = '0';
+               }
+             }, 4600)
+             // Reset key and X position
              .add(travelingKey, {
+               translateX: 0,
+               translateY: 0,
+               duration: 0
+             }, 4900)
+             .add(travelingX, {
                translateX: 0,
                translateY: 0,
                duration: 0

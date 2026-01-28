@@ -17,6 +17,10 @@
 <rect x="298" y="182" width="4" height="10" fill="#222"/>
 <rect x="294" y="187" width="4" height="3" fill="#222"/>
 </g>
+<g class="traveling-x" style="opacity: 0;">
+<circle cx="300" cy="175" r="10" fill="#e44" stroke="#222" stroke-width="1.5"/>
+<path d="M295 170 L305 180 M305 170 L295 180" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+</g>
 <g class="server-a">
 <rect x="95" y="45" width="110" height="40" rx="2" fill="#fcfcfc" stroke="#222" stroke-width="2"/>
 <line x1="115" y1="50" x2="115" y2="80" stroke="#222" stroke-width="1"/>
@@ -27,6 +31,14 @@
 <circle class="led led-a2" cx="103" cy="63" r="3" fill="#4a4"/>
 <circle class="led led-a3" cx="103" cy="73" r="3" fill="#fc3"/>
 <text x="150" y="35" text-anchor="middle" font-size="28" font-weight="700" fill="#222">Server A</text>
+<g class="server-a-check">
+<circle cx="215" cy="65" r="12" fill="#4a4"/>
+<path d="M209 65 L213 69 L221 61" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g class="server-a-x" style="opacity: 0;">
+<circle cx="215" cy="65" r="12" fill="#e44"/>
+<path d="M210 60 L220 70 M220 60 L210 70" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+</g>
 </g>
 <g class="server-b">
 <rect x="395" y="45" width="110" height="40" rx="2" fill="#fcfcfc" stroke="#222" stroke-width="2"/>
@@ -38,6 +50,14 @@
 <circle class="led led-b2" cx="403" cy="63" r="3" fill="#4a4"/>
 <circle class="led led-b3" cx="403" cy="73" r="3" fill="#fc3"/>
 <text x="450" y="35" text-anchor="middle" font-size="28" font-weight="700" fill="#222">Server B</text>
+<g class="server-b-check" style="opacity: 0;">
+<circle cx="515" cy="65" r="12" fill="#4a4"/>
+<path d="M509 65 L513 69 L521 61" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g class="server-b-x">
+<circle cx="515" cy="65" r="12" fill="#e44"/>
+<path d="M510 60 L520 70 M520 60 L510 70" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+</g>
 </g>
 <g fill="#fcfcfc" stroke="#222" stroke-width="2">
 <rect x="75" y="180" width="50" height="32" rx="2"/>
