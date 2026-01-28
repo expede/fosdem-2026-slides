@@ -1,5 +1,5 @@
 <div class="titlescreen">
 
-# The Problem
+<h1>The <em>Problem</em></h1>
 
 </div>

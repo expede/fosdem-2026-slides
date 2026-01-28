@@ -219,6 +219,30 @@
            }
          });
 
+         // Animate "problems" word with clone effect when trigger fragment appears
+         Reveal.on('fragmentshown', function(event) {
+           if (event.fragment.id === 'trigger-problems-animation') {
+             const problemsWord = document.querySelector('#problems-word');
+             if (!problemsWord || problemsWord.dataset.animated) return;
+             problemsWord.dataset.animated = 'true';
+
+             // Use anime.js splitText with clone parameter
+             const { chars } = anime.splitText(problemsWord, {
+               chars: {
+                 wrap: 'clip',
+                 clone: 'bottom'
+               }
+             });
+
+             anime.createTimeline({ loop: true, loopDelay: 500 })
+               .add(chars, {
+                 y: '-100%',
+                 duration: 750,
+                 ease: 'inOut(2)'
+               }, anime.stagger(50, { from: 'center' }));
+           }
+         });
+
         </script>
     </body>
 </html>
