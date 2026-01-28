@@ -1,6 +1,7 @@
 <div class="myslide vcenter">
 
-<p class="big-text">Switch servers, <em>keep access</em></p>
+<p class="big-text"><em>You</em> are the authority</p>
+<p class="big-text">Switch servers, keep access</p>
 
 <svg id="switch-servers-illustration" width="800" height="320" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" style="margin-top: 2rem;">
 <g class="connections" stroke="#ccc" stroke-width="2" fill="none">
