@@ -1,0 +1,415 @@
+// Minimal Automerge theme for FOSDEM 2026
+
+@import "../template/mixins";
+@import "../template/settings";
+
+// Fonts (vendored for offline use)
+@font-face {
+  font-family: "Overpass";
+  src: url("../../assets/fonts/overpass.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Overpass Mono";
+  src: url("../../assets/fonts/overpass-mono.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Colors
+$yellow: #fc3;
+$slate: #222;
+$white: #fcfcfc;
+
+// Theme settings (FOSDEM: bright bg, dark text, high contrast)
+$mainColor: $slate;
+$headingColor: $slate;
+$backgroundColor: $white;
+$mainFont: "Overpass", system-ui, sans-serif;
+$codeFont: "Overpass Mono", ui-monospace, monospace;
+$headingFont: "Overpass", system-ui, sans-serif;
+$headingTextShadow: none;
+
+@import "../template/theme";
+
+// Base font size (large for projector)
+html {
+  font-size: 36px;
+}
+
+
+// Dot grids - three bands with decreasing dot sizes going up
+// A: bottom 0-10%, largest dots
+.reveal .dot-grid-a {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10%;
+  mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r=".5"/><circle cx="3" cy="3" r=".5"/></svg>');
+  mask-size: 14px 14px;
+  background: $slate;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 1;
+}
+
+// B: 10-20%, medium dots
+.reveal .dot-grid-b {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  height: 10%;
+  mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r=".4"/><circle cx="3" cy="3" r=".4"/></svg>');
+  mask-size: 14px 14px;
+  background: $slate;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 1;
+}
+
+// C: 20-30%, smallest dots
+.reveal .dot-grid-c {
+  position: absolute;
+  bottom: 20%;
+  left: 0;
+  right: 0;
+  height: 10%;
+  mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r=".28"/><circle cx="3" cy="3" r=".28"/></svg>');
+  mask-size: 14px 14px;
+  background: $slate;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 1;
+}
+
+// Yellow highlight for <em> - animates in from left when slide is active
+em {
+  font-style: normal;
+  position: relative;
+  z-index: 1;
+}
+
+em::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 50%;
+  bottom: 10%;
+  background: $yellow;
+  z-index: -1;
+  transform: rotate(-1deg);
+  transform-origin: left;
+  width: 0%;
+}
+
+em.highlight-active::before {
+  animation: highlight-draw 0.6s ease-out 0.3s forwards;
+}
+
+@keyframes highlight-draw {
+  to {
+    width: calc(100% + 4px);
+  }
+}
+
+// Typography
+h1, h2, h3, p, li {
+  color: $slate;
+}
+
+h1 {
+  font-weight: 900 !important;
+  font-size: 3.5rem !important;
+}
+
+h2 {
+  font-weight: 900 !important;
+  font-size: 2.5rem !important;
+}
+
+h3 {
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+}
+
+p, li {
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.big-text {
+  font-size: 2rem !important;
+  font-weight: 700;
+  line-height: 1.3;
+  color: $slate;
+  box-shadow: none !important;
+}
+
+// Centered slide layout
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+// Giant thank you text
+.thank-you {
+  font-size: 5rem !important;
+  font-weight: 900 !important;
+  margin-bottom: 1rem !important;
+}
+
+// Icons inline with text
+.github-icon,
+.link-icon,
+.luma-icon {
+  height: 1em;
+  width: auto;
+  vertical-align: -0.1em;
+  margin-right: 0.3em;
+}
+
+// Compact links list
+.links-compact {
+  p {
+    margin: 0.3rem 0 !important;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+}
+
+// Disable default fragment transition for custom animations
+.reveal .slides section .fragment {
+  transition: none !important;
+}
+
+.reveal .slides section .fragment.visible {
+  opacity: 1;
+}
+
+// Quote marks that appear inline
+.quote-mark {
+  display: inline;
+}
+
+// Heavy font weight emphasis
+.heavy {
+  font-weight: 900;
+}
+
+// Outline-only text (transparent fill with stroke)
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 2px $slate;
+}
+
+// Section title logo
+.section-logo {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 1rem;
+}
+
+// Progress bar
+.reveal .progress {
+  height: 8px;
+  background: rgba($slate, 0.2);
+
+  span {
+    background: $yellow;
+  }
+}
+
+// Title slide - logo left, text right following diamond
+.titlescreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.title-logo-bg {
+  width: 450px;
+  height: 450px;
+  flex-shrink: 0;
+}
+
+.title-text {
+  text-align: left;
+  margin-left: -40px;
+  margin-top: -0.5em;
+
+  h1, h2 {
+    text-align: left !important;
+    margin: 0 !important;
+    line-height: 1.1 !important;
+    opacity: 0;
+  }
+
+  h1 {
+    font-size: 3rem !important;
+  }
+
+  h2 {
+    font-weight: 400 !important;
+    font-size: 1.1rem !important;
+    margin-top: 0.4rem !important;
+  }
+
+  .indent-keyhive {
+    padding-left: 0.85em;
+  }
+
+  .indent-subtitle-1 {
+    padding-left: 0.6em
+  }
+}
+
+#automerge-logo .am-border {
+  fill: $yellow;
+  clip-path: polygon(0% 0%, 0% 0%, 0% 0%);
+}
+
+#automerge-logo .am-inner {
+  fill: none;
+  stroke: $slate;
+  stroke-width: 2;
+}
+
+#automerge-logo .am-arrow {
+  fill: $slate;
+  clip-path: polygon(0% 0%, 0% 0%, 0% 0%);
+}
+
+// Ink & Switch style ink splashes in top corners
+.reveal .ink-splash {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  color: $slate;
+  opacity: 1;
+}
+
+.reveal .ink-splash-1 {
+  top: 20px;
+  left: 25px;
+  width: 53px;
+  height: 53px;
+}
+
+.reveal .ink-splash-2 {
+  top: 40px;
+  right: 50px;
+  width: 40px;
+  height: 40px;
+}
+
+.reveal .ink-splash-3 {
+  top: 25px;
+  right: 25px;
+  width: 47px;
+  height: 47px;
+  transform: scaleX(-1);
+}
+
+.reveal .ink-splash-4,
+.reveal .ink-splash-5 {
+  display: none;
+}
+
+// Speaker grid layout
+.speaker-grid {
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+  margin-top: 2rem;
+
+  .speaker {
+    text-align: center;
+
+    .headshot {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 10px solid $yellow;
+    }
+
+    h3 {
+      margin-bottom: 0.3rem !important;
+    }
+
+    p {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      margin: 0 !important;
+    }
+  }
+}
+
+// Sponsor logos layout
+.sponsor-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem 4rem;
+  margin-top: 2rem;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+
+  img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0;
+    transform: translateY(30px);
+
+    // Specific sizing adjustments
+    &:nth-child(1) { height: 50px; } // ARIA - smaller text logo
+    &:nth-child(2) { height: 90px; } // Ink & Switch - larger
+    &:nth-child(3) { height: 70px; } // NLnet
+    &:nth-child(4) { height: 60px; } // BlueYard
+  }
+}
+
+// Server needs grid (why you still need servers)
+.server-needs-grid {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-top: 3rem;
+}
+
+.server-need {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+
+  .need-icon {
+    width: 180px;
+    height: 120px;
+    color: $slate;
+  }
+
+  span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: $slate;
+  }
+}

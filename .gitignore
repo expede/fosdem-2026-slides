@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Lock files (using pnpm)
+package-lock.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Claude Code
+.claude/
+
+# Session artifacts
+.ignore/
+
+# Test output
+test/results/
+coverage/
+
+# Reveal.js examples (upstream demos)
+examples/

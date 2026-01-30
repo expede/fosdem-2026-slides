@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Automerge + Keyhive | FOSDEM 2026</title>
+
+        <link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/theme/expede.css">
+
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="plugin/highlight/monokai.css">
+    </head>
+    <body>
+		<div class="reveal">
+            <!-- Dot grid layers (A=large, B=medium, C=small) -->
+            <div class="dot-grid-a"></div>
+            <div class="dot-grid-b"></div>
+            <div class="dot-grid-c"></div>
+
+            <!-- Ink & Switch style ink splashes -->
+            <svg class="ink-splash ink-splash-1" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.503591 21.0854C0.152382 21.6763 -0.0331871 22.3899 0.00490116 23.2173C0.0850636 24.9608 0.881817 25.6885 2.45495 26.2013C4.17556 26.7622 5.03078 27.4766 6.27529 28.8671C7.02598 29.706 7.42237 30.9046 8.42019 31.5074C9.41093 32.1058 10.6966 32.0224 11.7662 32.3511C12.2884 32.5113 12.7649 33.1891 13.3114 33.2474C14.4749 33.3714 14.6835 32.4063 14.5874 31.3551C14.4877 30.2638 13.5634 29.5688 13.0373 28.6805C12.3699 27.5534 12.2551 26.2123 11.5789 25.0888C10.6138 23.4856 9.34006 21.7323 7.87677 20.5413C6.99099 19.8202 6.11364 19.1018 4.93157 19.0616C3.03956 18.9972 1.32116 19.7086 0.502706 21.0854H0.503591Z" fill="currentColor" transform="translate(0, -19)"/>
+            </svg>
+            <svg class="ink-splash ink-splash-2" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+              <path d="M149.194 0.608947C148.471 1.02946 147.747 1.59655 146.927 1.86657C144.569 2.64278 143.886 3.71113 144.639 5.9754C144.825 6.5336 145.033 7.17016 144.998 7.77556C144.951 8.60452 144.5 9.009 145.055 9.84039C145.764 10.9014 146.89 11.1441 148.089 10.9405C148.518 10.8676 148.895 10.7146 149.33 10.7145C150.514 10.714 151.679 11.3214 152.851 10.8442C154.256 10.2726 155.248 8.36142 155.683 7.00462C156.337 4.96079 155.534 4.24808 153.982 3.12657C153.084 2.47766 153.079 1.38619 152.273 0.721588C151.1 -0.24512 150.147 0.0546857 149.194 0.608947Z" fill="currentColor" transform="translate(-144.5, 0)"/>
+            </svg>
+            <svg class="ink-splash ink-splash-3" viewBox="0 0 9 10" xmlns="http://www.w3.org/2000/svg">
+              <path d="M124.568 26.7205C126.283 25.9204 127.491 24.1253 126.208 22.0949C123.713 18.1427 119.184 19.8897 119.651 24.3755C119.949 27.2447 122.595 27.641 124.568 26.7205Z" fill="currentColor" transform="translate(-119, -18)"/>
+            </svg>
+            <svg class="ink-splash ink-splash-4" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.503591 21.0854C0.152382 21.6763 -0.0331871 22.3899 0.00490116 23.2173C0.0850636 24.9608 0.881817 25.6885 2.45495 26.2013C4.17556 26.7622 5.03078 27.4766 6.27529 28.8671C7.02598 29.706 7.42237 30.9046 8.42019 31.5074C9.41093 32.1058 10.6966 32.0224 11.7662 32.3511C12.2884 32.5113 12.7649 33.1891 13.3114 33.2474C14.4749 33.3714 14.6835 32.4063 14.5874 31.3551C14.4877 30.2638 13.5634 29.5688 13.0373 28.6805C12.3699 27.5534 12.2551 26.2123 11.5789 25.0888C10.6138 23.4856 9.34006 21.7323 7.87677 20.5413C6.99099 19.8202 6.11364 19.1018 4.93157 19.0616C3.03956 18.9972 1.32116 19.7086 0.502706 21.0854H0.503591Z" fill="currentColor" transform="translate(0, -19)"/>
+            </svg>
+            <svg class="ink-splash ink-splash-5" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+              <path d="M149.194 0.608947C148.471 1.02946 147.747 1.59655 146.927 1.86657C144.569 2.64278 143.886 3.71113 144.639 5.9754C144.825 6.5336 145.033 7.17016 144.998 7.77556C144.951 8.60452 144.5 9.009 145.055 9.84039C145.764 10.9014 146.89 11.1441 148.089 10.9405C148.518 10.8676 148.895 10.7146 149.33 10.7145C150.514 10.714 151.679 11.3214 152.851 10.8442C154.256 10.2726 155.248 8.36142 155.683 7.00462C156.337 4.96079 155.534 4.24808 153.982 3.12657C153.084 2.47766 153.079 1.38619 152.273 0.721588C151.1 -0.24512 150.147 0.0546857 149.194 0.608947Z" fill="currentColor" transform="translate(-144.5, 0)"/>
+            </svg>
+
+            <div class="slides">
+                <!-- Section 1: Intro -->
+                <section data-markdown="slides/01-intro/00-blank.md"></section>
+                <section data-markdown="slides/01-intro/01-title.md"></section>
+                <section data-markdown="slides/01-intro/02-speakers.md"></section>
+                <section data-markdown="slides/01-intro/03-sponsors.md"></section>
+                <section data-markdown="slides/01-intro/04-local-first-definition.md"></section>
+                <section data-markdown="slides/01-intro/05-the-problem-teaser.md"></section>
+
+                <!-- Section 2: The Problem -->
+                <section data-markdown="slides/02-problem/01-section-title.md"></section>
+                <section data-markdown="slides/02-problem/02-self-hosting-promise.md"></section>
+                <section data-markdown="slides/02-problem/03-self-hosting-reality.md"></section>
+                <section data-markdown="slides/02-problem/04-self-hosting-result.md"></section>
+                <section data-markdown="slides/02-problem/05-local-first-hope.md"></section>
+                <section data-markdown="slides/02-problem/06-servers-still-needed.md"></section>
+                <section data-markdown="slides/02-problem/07-enshittification-title.md"></section>
+                <section data-markdown="slides/02-problem/08-enshittification-list.md"></section>
+                <section data-markdown="slides/02-problem/09-thesis.md"></section>
+
+                <!-- Section 3: Automerge -->
+                <section data-markdown="slides/03-automerge/01-section-title.md"></section>
+                <section data-markdown="slides/03-automerge/02-crdt-intro.md"></section>
+                <section data-markdown="slides/03-automerge/03-never-discard-history.md"></section>
+                <section data-markdown="slides/03-automerge/04-client-side-merge.md"></section>
+                <section data-markdown="slides/03-automerge/05-dumb-pipe.md"></section>
+                <section data-markdown="slides/03-automerge/06-portability.md"></section>
+
+                <!-- Section 4: Keyhive -->
+                <section data-markdown="slides/04-keyhive/01-section-title.md"></section>
+                <section data-markdown="slides/04-keyhive/02-signal-for-docs.md"></section>
+                <section data-markdown="slides/04-keyhive/03-comparison.md"></section>
+                <section data-markdown="slides/04-keyhive/04-e2e-encrypted.md"></section>
+                <section data-markdown="slides/04-keyhive/05-trust-minimized.md"></section>
+                <section data-markdown="slides/04-keyhive/06-switch-servers.md"></section>
+                <section data-markdown="slides/04-keyhive/07-expressive.md"></section>
+                <section data-markdown="slides/04-keyhive/08-caps.md"></section>
+                <section data-markdown="slides/04-keyhive/09-rbac.md"></section>
+                <section data-markdown="slides/04-keyhive/10-cross-org.md"></section>
+                <section data-markdown="slides/04-keyhive/11-no-admins.md"></section>
+
+                <!-- Section 5: The Vision -->
+                <section data-markdown="slides/05-vision/01-section-title.md"></section>
+                <section data-markdown="slides/05-vision/02-infrastructure.md"></section>
+                <section data-markdown="slides/05-vision/03-not-tied.md"></section>
+                <section data-markdown="slides/05-vision/04-invisible.md"></section>
+                <section data-markdown="slides/05-vision/05-call-to-action.md"></section>
+                <section data-markdown="slides/05-vision/06-thank-you.md"></section>
+			</div>
+		</div>
+
+        <script src="assets/js/svg.min.js"></script>
+        <script src="assets/js/anime.umd.min.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/math/math.js"></script>
+        <script src="plugin/search/search.js"></script>
+        <script src="assets/js/mermaid-plugin.js"></script>
+        <script>
+         // More info about initialization & config:
+         // - https://revealjs.com/initialization/
+         // - https://revealjs.com/config/
+         // Animate Automerge logo on title slide
+         function animateAutomergeLogo() {
+           const border = document.querySelector('#automerge-logo .am-border');
+           const inner = document.querySelector('#automerge-logo .am-inner');
+           const arrow = document.querySelector('#automerge-logo .am-arrow');
+           if (!border || !inner || !arrow) return;
+
+           const innerDrawable = anime.svg.createDrawable(inner);
+
+           // Wipe in yellow border from top-left to bottom-right
+           anime.animate(border, {
+             clipPath: [
+               'polygon(0% 0%, 0% 0%, 0% 0%)',
+               'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
+             ],
+             ease: 'inOutQuad',
+             duration: 800,
+             onComplete: function() {
+               // Draw inner black border around the shape
+               anime.animate(innerDrawable, {
+                 draw: ['0 0', '0 1'],
+                 ease: 'inOutSine',
+                 duration: 800,
+                 onComplete: function() {
+                   // Wipe in arrow from bottom to top
+                   anime.animate(arrow, {
+                     clipPath: [
+                       'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
+                       'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
+                     ],
+                     ease: 'outQuad',
+                     duration: 400
+                   });
+                 }
+               });
+             }
+           });
+         }
+
+         // Animate title text (fade + drift from right)
+         function animateTitleText() {
+           const h1s = document.querySelectorAll('.title-text h1');
+           const h2s = document.querySelectorAll('.title-text h2');
+           if (!h1s.length) return;
+
+           // Animate h1s first
+           anime.animate(h1s, {
+             opacity: [0, 1],
+             translateX: [30, 0],
+             ease: 'outQuad',
+             duration: 600,
+             delay: function(el, i) { return 800 + i * 100; }
+           });
+
+           // Animate h2s after
+           anime.animate(h2s, {
+             opacity: [0, 1],
+             translateX: [20, 0],
+             ease: 'outQuad',
+             duration: 500,
+             delay: 1200
+           });
+         }
+
+         // Animate sponsor logos
+         function animateSponsorLogos() {
+           const logos = document.querySelectorAll('.sponsor-logos img');
+           if (!logos.length) return;
+
+           anime.animate(logos, {
+             opacity: [0, 1],
+             translateY: [30, 0],
+             scale: [0.8, 1],
+             rotate: function() { return anime.random(-5, 5); },
+             ease: 'outElastic(1, .6)',
+             duration: 1000,
+             delay: function(el, i) { return i * 150; }
+           });
+         }
+
+         // Run animation when page loads (first slide)
+         document.addEventListener('DOMContentLoaded', function() {
+           setTimeout(function() {
+             animateAutomergeLogo();
+             animateTitleText();
+           }, 300);
+         });
+
+         Reveal.initialize({
+              width: 1920,
+              height: 1080,
+             disableLayout: false,
+
+             center: true,
+             margin: 0,
+
+             hash: true,
+             controls: false,
+
+             autoanimate: true,
+             transition: 'fade',
+             backgroundTransition: 'fade',
+
+             // Learn about plugins: https://revealjs.com/plugins/
+             plugins: [
+                 RevealMarkdown,
+                 RevealNotes,
+                 RevealMath,
+                 RevealSearch,
+                 RevealMermaid,
+                 RevealHighlight,
+             ],
+         });
+
+         // Animate switch servers illustration
+         function animateSwitchServers() {
+           const illustration = document.querySelector('#switch-servers-illustration');
+           if (!illustration || illustration.dataset.animated) return;
+           illustration.dataset.animated = 'true';
+
+           const switchingLine = illustration.querySelector('.switching-line');
+           const leds = illustration.querySelectorAll('.led');
+           const ledsA = illustration.querySelectorAll('.server-a .led');
+           const ledsB = illustration.querySelectorAll('.server-b .led');
+           const travelingKey = illustration.querySelector('.traveling-key');
+           const serverACheck = illustration.querySelector('.server-a-check');
+           const serverAX = illustration.querySelector('.server-a-x');
+           const serverBCheck = illustration.querySelector('.server-b-check');
+           const serverBX = illustration.querySelector('.server-b-x');
+           const travelingX = illustration.querySelector('.traveling-x');
+
+           // Blink LEDs randomly
+           leds.forEach(function(led) {
+             anime.animate(led, {
+               opacity: [1, 0.3, 1],
+               duration: function() { return 300 + Math.random() * 400; },
+               delay: function() { return Math.random() * 1000; },
+               loop: true,
+               ease: 'inOutSine'
+             });
+           });
+
+           // P2P connection animation - cycles between different device pairs
+           const p2pPath = illustration.querySelector('#p2p-connection');
+           // Device positions: laptop1=100, phone1=200, laptop2=300, phone2=400, laptop3=500
+           const connections = [
+             { start: 100, end: 500, ctrl: 300 },  // laptop to laptop (far)
+             { start: 200, end: 400, ctrl: 300 },  // phone to phone
+             { start: 100, end: 200, ctrl: 150 },  // laptop to phone (left)
+             { start: 400, end: 500, ctrl: 450 },  // phone to laptop (right)
+             { start: 200, end: 300, ctrl: 250 },  // phone to center laptop
+             { start: 300, end: 400, ctrl: 350 },  // center laptop to phone
+             { start: 100, end: 300, ctrl: 200 },  // far left to center
+             { start: 300, end: 500, ctrl: 400 },  // center to far right
+           ];
+           let connIndex = 0;
+
+           function animateP2P() {
+             const conn = connections[connIndex];
+             const curveDepth = Math.abs(conn.end - conn.start) * 0.15 + 20;
+             const newPath = `M${conn.start} 215 Q${conn.ctrl} ${215 + curveDepth} ${conn.end} 215`;
+
+             // Fade out, change path, fade in
+             anime.animate(p2pPath, {
+               opacity: [1, 0],
+               strokeDashoffset: [0, 100],
+               duration: 300,
+               ease: 'inQuad',
+               onComplete: function() {
+                 p2pPath.setAttribute('d', newPath);
+                 anime.animate(p2pPath, {
+                   opacity: [0, 1],
+                   strokeDashoffset: [100, 0],
+                   duration: 400,
+                   ease: 'outQuad'
+                 });
+               }
+             });
+
+             connIndex = (connIndex + 1) % connections.length;
+           }
+
+           // Set up dash for animation
+           p2pPath.setAttribute('stroke-dasharray', '500');
+           p2pPath.setAttribute('stroke-dashoffset', '0');
+
+           // Cycle connections
+           setInterval(animateP2P, 1500);
+
+           anime.createTimeline({ loop: true, loopDelay: 2000 })
+             // Start connected to Server A
+             .add(switchingLine, {
+               x1: 150,
+               duration: 0
+             }, 0)
+             // Key appears and travels to Server B, X travels to Server A
+             .add(travelingKey, {
+               opacity: [0, 1],
+               duration: 100
+             }, 900)
+             .add(travelingX, {
+               opacity: [0, 1],
+               duration: 100
+             }, 900)
+             .add(travelingKey, {
+               translateX: [0, 150],
+               translateY: [0, -110],
+               duration: 1200,
+               ease: 'inOutQuad'
+             }, 1000)
+             .add(travelingX, {
+               translateX: [0, -150],
+               translateY: [0, -110],
+               duration: 1200,
+               ease: 'inOutQuad'
+             }, 1000)
+             // Switch to Server B
+             .add(switchingLine, {
+               x1: 450,
+               duration: 800,
+               ease: 'inOutQuad'
+             }, 1000)
+             // Key and X fade out, Server A LEDs turn red
+             .add(travelingKey, {
+               opacity: [1, 0],
+               duration: 200
+             }, 2100)
+             .add(travelingX, {
+               opacity: [1, 0],
+               duration: 200
+             }, 2100)
+             .add({
+               duration: 1,
+               onComplete: function() {
+                 ledsA.forEach(function(led) { led.setAttribute('fill', '#e44'); });
+                 ledsB.forEach(function(led) { led.setAttribute('fill', '#4a4'); });
+                 serverACheck.style.opacity = '0';
+                 serverAX.style.opacity = '1';
+                 serverBCheck.style.opacity = '1';
+                 serverBX.style.opacity = '0';
+               }
+             }, 2100)
+             // Reset key and X position
+             .add(travelingKey, {
+               translateX: 0,
+               translateY: 0,
+               duration: 0
+             }, 2400)
+             .add(travelingX, {
+               translateX: 0,
+               translateY: 0,
+               duration: 0
+             }, 2400)
+             // Hold at Server B
+             .add(switchingLine, {
+               x1: 450,
+               duration: 0
+             }, 2500)
+             // Key appears and travels to Server A, X travels to Server B
+             .add(travelingKey, {
+               opacity: [0, 1],
+               duration: 100
+             }, 3400)
+             .add(travelingX, {
+               opacity: [0, 1],
+               duration: 100
+             }, 3400)
+             .add(travelingKey, {
+               translateX: [0, -150],
+               translateY: [0, -110],
+               duration: 1200,
+               ease: 'inOutQuad'
+             }, 3500)
+             .add(travelingX, {
+               translateX: [0, 150],
+               translateY: [0, -110],
+               duration: 1200,
+               ease: 'inOutQuad'
+             }, 3500)
+             // Switch back to Server A
+             .add(switchingLine, {
+               x1: 150,
+               duration: 800,
+               ease: 'inOutQuad'
+             }, 3500)
+             // Key and X fade out, Server B LEDs turn red
+             .add(travelingKey, {
+               opacity: [1, 0],
+               duration: 200
+             }, 4600)
+             .add(travelingX, {
+               opacity: [1, 0],
+               duration: 200
+             }, 4600)
+             .add({
+               duration: 1,
+               onComplete: function() {
+                 ledsB.forEach(function(led) { led.setAttribute('fill', '#e44'); });
+                 ledsA.forEach(function(led) { led.setAttribute('fill', '#4a4'); });
+                 serverBCheck.style.opacity = '0';
+                 serverBX.style.opacity = '1';
+                 serverACheck.style.opacity = '1';
+                 serverAX.style.opacity = '0';
+               }
+             }, 4600)
+             // Reset key and X position
+             .add(travelingKey, {
+               translateX: 0,
+               translateY: 0,
+               duration: 0
+             }, 4900)
+             .add(travelingX, {
+               translateX: 0,
+               translateY: 0,
+               duration: 0
+             }, 4900);
+         }
+
+         function animateGrandVision() {
+           const textEl = document.querySelector('#grand-vision-text');
+           if (!textEl || textEl.dataset.animated) return;
+           textEl.dataset.animated = 'true';
+
+           // Split text into characters
+           const { chars } = anime.splitText(textEl, { chars: true });
+
+           // Wave animation - gentle wave back and forth
+           anime.animate(chars, {
+             translateY: [0, -10, 0],
+             rotate: [0, -3, 0, 3, 0],
+             duration: 1200,
+             delay: anime.stagger(80, { from: 'first' }),
+             loop: true,
+             loopDelay: 0,
+             alternate: true,
+             ease: 'inOutSine'
+           });
+
+           // Create sparkle container (just the "Grand Vision" text)
+           textEl.style.position = 'relative';
+           textEl.style.display = 'inline-block';
+           textEl.style.color = '#fc3';
+           textEl.style.webkitTextStroke = '6px #222';
+           textEl.style.paintOrder = 'stroke fill';
+
+           // Generate sparkles
+           function createSparkle() {
+             const sparkle = document.createElement('span');
+             sparkle.innerHTML = '✦';
+             sparkle.style.cssText = 'position: absolute; pointer-events: none; font-size: 0.5em; opacity: 0; color: #fc3; -webkit-text-stroke: 0;';
+             sparkle.style.left = (Math.random() * 100) + '%';
+             sparkle.style.top = (Math.random() * 100 - 50) + '%';
+             textEl.appendChild(sparkle);
+
+             anime.animate(sparkle, {
+               opacity: [0, 0.8, 0],
+               scale: [0.5, 1.2, 0.5],
+               translateY: [0, -15],
+               duration: 1200,
+               ease: 'outQuad',
+               onComplete: function() { sparkle.remove(); }
+             });
+           }
+
+           // Spawn sparkles periodically
+           setInterval(createSparkle, 400);
+         }
+
+         // Trigger animations on slide change
+         Reveal.on('slidechanged', function(event) {
+           // Animate switch servers illustration
+           if (event.currentSlide.querySelector('#switch-servers-illustration')) {
+             animateSwitchServers();
+           }
+
+           // Animate grand vision text
+           if (event.currentSlide.querySelector('#grand-vision-text')) {
+             animateGrandVision();
+           }
+
+           // Animate sponsor logos when that slide appears
+           if (event.currentSlide.querySelector('.sponsor-logos')) {
+             animateSponsorLogos();
+           }
+
+           // Reset and trigger em highlight animations
+           // Remove class from all ems first
+           document.querySelectorAll('em.highlight-active').forEach(function(em) {
+             em.classList.remove('highlight-active');
+             em.style.backgroundSize = '0% 100%';
+           });
+           // Add class to ems on current slide
+           event.currentSlide.querySelectorAll('em').forEach(function(em) {
+             em.classList.add('highlight-active');
+           });
+         });
+
+         // Animate "problems" word with clone effect when trigger fragment appears
+         Reveal.on('fragmentshown', function(event) {
+           // Default subtle entrance for all text fragments
+           const customAnimated = ['trigger-problems-animation', 'need-nat', 'need-availability', 'need-backup', 'or-both'];
+           if (!customAnimated.includes(event.fragment.id) && !event.fragment.classList.contains('server-need')) {
+             event.fragment.style.opacity = '0';
+             event.fragment.style.transform = 'translateY(10px)';
+             anime.animate(event.fragment, {
+               translateY: 0,
+               opacity: 1,
+               duration: 600,
+               ease: 'outCubic'
+             });
+           }
+
+           if (event.fragment.id === 'trigger-problems-animation') {
+             const problemsWord = document.querySelector('#problems-word');
+             if (!problemsWord || problemsWord.dataset.animated) return;
+             problemsWord.dataset.animated = 'true';
+
+             // Glitch effect - RGB split + jitter
+             problemsWord.style.position = 'relative';
+             problemsWord.style.display = 'inline-block';
+
+             // Create glitch layers
+             const text = problemsWord.textContent;
+             problemsWord.innerHTML = `<span class="glitch-base">${text}</span><span class="glitch-r">${text}</span><span class="glitch-b">${text}</span>`;
+
+             const base = problemsWord.querySelector('.glitch-base');
+             const glitchR = problemsWord.querySelector('.glitch-r');
+             const glitchB = problemsWord.querySelector('.glitch-b');
+
+             // Style the layers
+             [base, glitchR, glitchB].forEach(el => {
+               el.style.display = 'inline-block';
+             });
+             glitchR.style.position = 'absolute';
+             glitchR.style.left = '0';
+             glitchR.style.top = '0';
+             glitchR.style.color = '#f00';
+             glitchR.style.mixBlendMode = 'multiply';
+             glitchR.style.opacity = '0';
+
+             glitchB.style.position = 'absolute';
+             glitchB.style.left = '0';
+             glitchB.style.top = '0';
+             glitchB.style.color = '#00f';
+             glitchB.style.mixBlendMode = 'multiply';
+             glitchB.style.opacity = '0';
+
+             // Glitch animation loop with randomness
+             function doGlitch() {
+               const intensity = 1 + Math.random() * 2;
+               const duration = 80 + Math.random() * 100;
+
+               // Red layer glitch
+               anime.animate(glitchR, {
+                 opacity: [0, 0.9, 0.4, 0],
+                 translateX: [0, -6 * intensity, 4 * intensity, -2, 0],
+                 translateY: [0, 2 * Math.random(), -1, 0],
+                 duration: duration,
+                 ease: 'steps(4)'
+               });
+               // Blue layer glitch
+               anime.animate(glitchB, {
+                 opacity: [0, 0.9, 0.5, 0],
+                 translateX: [0, 6 * intensity, -3 * intensity, 1, 0],
+                 translateY: [0, -2 * Math.random(), 1, 0],
+                 duration: duration,
+                 ease: 'steps(4)'
+               });
+               // Base jitter
+               anime.animate(base, {
+                 translateX: [0, -3 * intensity, 5 * intensity, -2, 0],
+                 translateY: [0, 1, -1, 0],
+                 skewX: [0, 4 * intensity, -3, 1, 0],
+                 scaleX: [1, 1.02, 0.98, 1],
+                 duration: duration,
+                 ease: 'steps(5)'
+               });
+             }
+
+             // Initial glitch burst
+             doGlitch();
+             setTimeout(doGlitch, 80);
+             setTimeout(doGlitch, 150);
+             setTimeout(doGlitch, 220);
+             setTimeout(doGlitch, 300);
+
+             // Erratic random glitches with varying intervals
+             function scheduleGlitch() {
+               const delay = 100 + Math.random() * 300;
+               setTimeout(() => {
+                 doGlitch();
+                 if (Math.random() > 0.5) setTimeout(doGlitch, 50); // double glitch
+                 if (Math.random() > 0.8) setTimeout(doGlitch, 100); // triple glitch
+                 scheduleGlitch();
+               }, delay);
+             }
+             scheduleGlitch();
+           }
+
+           // NAT traversal - arrows pulse in sequence: top-left, top-right, bottom-right, bottom-left
+           if (event.fragment.id === 'need-nat') {
+             const arrowInLeft = event.fragment.querySelector('.nat-arrow-in-left');
+             const arrowInRight = event.fragment.querySelector('.nat-arrow-in-right');
+             const arrowOutLeft = event.fragment.querySelector('.nat-arrow-out-left');
+             const arrowOutRight = event.fragment.querySelector('.nat-arrow-out-right');
+
+             anime.createTimeline({ loop: true, loopDelay: 1000 })
+               .add(arrowInLeft, {
+                 translateX: [0, 3, 0],
+                 opacity: [0.5, 1, 0.5],
+                 duration: 600,
+                 ease: 'inOutSine'
+               }, 0)
+               .add(arrowInRight, {
+                 translateX: [0, 3, 0],
+                 opacity: [0.5, 1, 0.5],
+                 duration: 600,
+                 ease: 'inOutSine'
+               }, 200)
+               .add(arrowOutRight, {
+                 translateX: [0, -3, 0],
+                 opacity: [0.5, 1, 0.5],
+                 duration: 600,
+                 ease: 'inOutSine'
+               }, 1200)
+               .add(arrowOutLeft, {
+                 translateX: [0, -3, 0],
+                 opacity: [0.5, 1, 0.5],
+                 duration: 600,
+                 ease: 'inOutSine'
+               }, 1400);
+           }
+
+           // Always-on availability - clock hands rotate independently
+           if (event.fragment.id === 'need-availability') {
+             const hourHand = event.fragment.querySelector('.clock-hour');
+             const minuteHand = event.fragment.querySelector('.clock-minute');
+
+             anime.animate(hourHand, {
+               rotate: 360,
+               duration: 12000,
+               ease: 'linear',
+               loop: true
+             });
+
+             anime.animate(minuteHand, {
+               rotate: 360,
+               duration: 3000,
+               ease: 'linear',
+               loop: true
+             });
+           }
+
+           // Backup & redundancy - server pushes docs, then catches fire
+           if (event.fragment.id === 'need-backup') {
+             const doc1 = event.fragment.querySelector('.doc-1');
+             const doc2 = event.fragment.querySelector('.doc-2');
+             const doc3 = event.fragment.querySelector('.doc-3');
+             const docFlying = event.fragment.querySelector('.doc-flying');
+             const server = event.fragment.querySelector('.backup-server');
+             const fire = event.fragment.querySelector('.server-fire');
+             const eyeLeft = event.fragment.querySelector('.server-eye-left');
+             const eyeRight = event.fragment.querySelector('.server-eye-right');
+             const xEyes = event.fragment.querySelector('.server-x-eyes');
+             const smile = event.fragment.querySelector('.server-smile');
+             const sad = event.fragment.querySelector('.server-sad');
+             const checkmark = event.fragment.querySelector('.checkmark');
+
+             const checkDrawable = anime.svg.createDrawable(checkmark);
+
+             anime.createTimeline()
+               // First doc flies to stack
+               .add(docFlying, {
+                 translateX: [0, 40],
+                 duration: 400,
+                 ease: 'inOutQuad'
+               }, 0)
+               .add(doc1, {
+                 opacity: [0, 1],
+                 duration: 100
+               }, 400)
+               // Reset flying doc, send second
+               .add(docFlying, {
+                 translateX: [0, 45],
+                 duration: 400,
+                 ease: 'inOutQuad'
+               }, 500)
+               .add(doc2, {
+                 opacity: [0, 1],
+                 duration: 100
+               }, 900)
+               // Reset flying doc, send third
+               .add(docFlying, {
+                 translateX: [0, 50],
+                 duration: 400,
+                 ease: 'inOutQuad'
+               }, 1000)
+               .add(doc3, {
+                 opacity: [0, 1],
+                 duration: 100
+               }, 1400)
+               // Hide flying doc
+               .add(docFlying, {
+                 opacity: [1, 0],
+                 duration: 100
+               }, 1400)
+               // Server catches fire!
+               .add(fire, {
+                 opacity: [0, 1],
+                 duration: 200
+               }, 1600)
+               .add(fire, {
+                 translateY: [0, -3, 0, -2, 0],
+                 scale: [1, 1.2, 0.9, 1.1, 1],
+                 duration: 800,
+                 loop: true
+               }, 1600)
+               // Server shakes
+               .add(server, {
+                 translateX: [0, -2, 2, -2, 2, 0],
+                 duration: 300
+               }, 1600)
+               // Happy face becomes X_X
+               .add(eyeLeft, { opacity: [1, 0], duration: 100 }, 1600)
+               .add(eyeRight, { opacity: [1, 0], duration: 100 }, 1600)
+               .add(xEyes, { opacity: [0, 1], duration: 100 }, 1600)
+               .add(smile, { opacity: [1, 0], duration: 100 }, 1600)
+               .add(sad, { opacity: [0, 1], duration: 100 }, 1600)
+               // Checkmark appears
+               .add(checkmark, {
+                 opacity: [0, 1],
+                 duration: 100
+               }, 2200)
+               .add(checkDrawable, {
+                 draw: ['0 0', '0 1'],
+                 duration: 400,
+                 ease: 'outQuad'
+               }, 2200);
+           }
+
+           // "or both" - fade and drift from above
+           if (event.fragment.id === 'or-both') {
+             event.fragment.style.transform = 'translateY(-1lh)';
+             event.fragment.style.opacity = '0';
+             anime.animate(event.fragment, {
+               translateY: [ '-2lh', '0' ],
+               opacity: 1,
+               duration: 500,
+               ease: 'outQuad'
+             });
+           }
+         });
+
+        </script>
+    </body>
+</html>
