@@ -1,0 +1,16 @@
+<svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- DXOS icon: compass/asterisk X shape -->
+  <g transform="translate(4, 2)">
+    <!-- Vertical line with pointed ends -->
+    <path d="M16 0 L18 14 L16 16 L14 14 Z" fill="#000"/>
+    <path d="M16 36 L18 22 L16 20 L14 22 Z" fill="#000"/>
+    <!-- Horizontal line with pointed ends -->
+    <path d="M0 18 L14 16 L16 18 L14 20 Z" fill="#000"/>
+    <path d="M32 18 L18 16 L16 18 L18 20 Z" fill="#000"/>
+    <!-- Diagonal X lines -->
+    <line x1="5" y1="5" x2="27" y2="31" stroke="#000" stroke-width="1.8"/>
+    <line x1="27" y1="5" x2="5" y2="31" stroke="#000" stroke-width="1.8"/>
+  </g>
+  <!-- DXOS wordmark -->
+  <text x="46" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="400" letter-spacing="3" fill="#000">DXOS</text>
+</svg>

@@ -188,12 +188,24 @@ p, li {
 }
 
 // Disable default fragment transition for custom animations
-.reveal .slides section .fragment {
+.reveal .slides section .fragment:not(.fade-drift-up) {
   transition: none !important;
 }
 
-.reveal .slides section .fragment.visible {
+.reveal .slides section .fragment:not(.fade-drift-up).visible {
   opacity: 1;
+}
+
+// Fade and drift up fragment animation
+.reveal .slides section .fragment.fade-drift-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 // Quote marks that appear inline
@@ -337,6 +349,7 @@ p, li {
 
   .speaker {
     text-align: center;
+    opacity: 0;
 
     .headshot {
       width: 180px;

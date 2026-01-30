@@ -164,20 +164,44 @@
            });
          }
 
+         // Animate speakers
+         function animateSpeakers() {
+           const speakers = document.querySelectorAll('.speaker');
+           if (!speakers.length) return;
+
+           anime.animate(speakers, {
+             opacity: [0, 1],
+             translateY: [30, 0],
+             ease: 'outQuad',
+             duration: 800,
+             delay: function(el, i) { return 200 + i * 200; }
+           });
+         }
+
          // Animate sponsor logos
          function animateSponsorLogos() {
            const logos = document.querySelectorAll('.sponsor-logos img');
+           const andOthers = document.querySelector('.sponsor-others');
            if (!logos.length) return;
 
            anime.animate(logos, {
              opacity: [0, 1],
              translateY: [30, 0],
              scale: [0.8, 1],
-             rotate: function() { return anime.random(-5, 5); },
              ease: 'outElastic(1, .6)',
              duration: 1000,
              delay: function(el, i) { return i * 150; }
            });
+
+           if (andOthers) {
+             anime.animate(andOthers, {
+               opacity: [0, 0.6],
+               translateY: [25, 0],
+               ease: 'outQuad',
+               duration: 600,
+               delay: logos.length * 150 + 100
+             });
+           }
          }
 
          // Run animation when page loads (first slide)
@@ -478,6 +502,11 @@
            // Animate grand vision text
            if (event.currentSlide.querySelector('#grand-vision-text')) {
              animateGrandVision();
+           }
+
+           // Animate speakers when that slide appears
+           if (event.currentSlide.querySelector('.speaker-grid')) {
+             animateSpeakers();
            }
 
            // Animate sponsor logos when that slide appears
