@@ -1,6 +1,6 @@
 <div class="myslide titled">
 
-# Usage
+# Feels like POJOs
 
 <pre style="font-size: 1.3rem; height: 22rem; transition: none !important; animation: none !important;" data-auto-animate="false"><code class="language-javascript" data-line-numbers="1|3-4|6-10|12-14">import { Automerge } from "@automerge/automerge"
 

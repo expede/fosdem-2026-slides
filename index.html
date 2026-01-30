@@ -69,15 +69,16 @@
                 <!-- Section 4: Keyhive -->
                 <section data-markdown="slides/04-keyhive/01-section-title.md"></section>
                 <section data-markdown="slides/04-keyhive/02-signal-for-docs.md"></section>
-                <section data-markdown="slides/04-keyhive/03-expressive.md"></section>
-                <section data-markdown="slides/04-keyhive/04-comparison.md"></section>
-                <section data-markdown="slides/04-keyhive/05-e2e-encrypted.md"></section>
+                <section data-markdown="slides/04-keyhive/03-requirements.md"></section>
+                <section data-markdown="slides/04-keyhive/04-expressive.md"></section>
+                <section data-markdown="slides/04-keyhive/05-comparison.md"></section>
                 <section data-markdown="slides/04-keyhive/06-trust-minimized.md"></section>
                 <section data-markdown="slides/04-keyhive/07-switch-servers.md"></section>
-                <section data-markdown="slides/04-keyhive/08-caps.md"></section>
-                <section data-markdown="slides/04-keyhive/09-rbac.md"></section>
-                <section data-markdown="slides/04-keyhive/10-cross-org.md"></section>
-                <section data-markdown="slides/04-keyhive/11-no-admins.md"></section>
+                <section data-markdown="slides/04-keyhive/08-e2e-encrypted.md"></section>
+                <section data-markdown="slides/04-keyhive/09-caps.md"></section>
+                <section data-markdown="slides/04-keyhive/10-rbac.md"></section>
+                <section data-markdown="slides/04-keyhive/11-timelines.md"></section>
+                <section data-markdown="slides/04-keyhive/12-no-admins.md"></section>
 
                 <!-- Section 5: The Vision -->
                 <section data-markdown="slides/05-vision/01-section-title.md"></section>
@@ -452,16 +453,20 @@
            // Split text into characters
            const { chars } = anime.splitText(textEl, { chars: true });
 
-           // Wave animation - gentle wave back and forth
-           anime.animate(chars, {
-             translateY: [0, -10, 0],
-             rotate: [0, -3, 0, 3, 0],
-             duration: 1200,
-             delay: anime.stagger(80, { from: 'first' }),
-             loop: true,
-             loopDelay: 0,
-             alternate: true,
-             ease: 'inOutSine'
+           // Random independent movement for each character
+           chars.forEach(function(char) {
+             function animateChar() {
+               anime.animate(char, {
+                 translateY: [0, -5 - Math.random() * 10, 0],
+                 translateX: [0, -3 + Math.random() * 6, 0],
+                 rotate: [0, -4 + Math.random() * 8, 0],
+                 duration: 600 + Math.random() * 800,
+                 ease: 'inOutSine',
+                 onComplete: animateChar
+               });
+             }
+             // Start each character with a random delay
+             setTimeout(animateChar, Math.random() * 1000);
            });
 
            // Create sparkle container (just the "Grand Vision" text)
