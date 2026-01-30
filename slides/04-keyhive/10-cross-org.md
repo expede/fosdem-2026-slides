@@ -1,6 +1,7 @@
 <div class="myslide vcenter">
 
-<p class="big-text">Casual Revocation</p>
+<p class="big-text">No Auth Server = Out Of Order Auth</p>
+<p class="big-text">Causal Revocation</p>
 
 <svg id="revocation-diagram" width="1094" height="594" viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg" style="margin-top: 1rem;">
 <defs>

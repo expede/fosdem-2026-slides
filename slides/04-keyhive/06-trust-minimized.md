@@ -1,6 +1,6 @@
 <div class="myslide titled">
 
-# Trust-Minimized Servers
+<h1> Interchangeable<br /><em>is</em> Trust-Minimized</h1>
 
 <p class="big-text">They sync encrypted bytes</p>
 

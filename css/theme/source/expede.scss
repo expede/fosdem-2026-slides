@@ -188,11 +188,11 @@ p, li {
 }
 
 // Disable default fragment transition for custom animations
-.reveal .slides section .fragment:not(.fade-drift-up) {
+.reveal .slides section .fragment:not(.fade-drift-up):not(.wipe-in) {
   transition: none !important;
 }
 
-.reveal .slides section .fragment:not(.fade-drift-up).visible {
+.reveal .slides section .fragment:not(.fade-drift-up):not(.wipe-in).visible {
   opacity: 1;
 }
 
@@ -208,9 +208,49 @@ p, li {
   }
 }
 
+// Wipe in from left animation
+.reveal .slides section .fragment.wipe-in {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.6s ease-out;
+
+  &.visible {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+// Disable animation on code line highlights
+.reveal pre,
+.reveal pre *,
+.reveal pre code,
+.reveal pre code *,
+.reveal .hljs-ln-line,
+.reveal [data-line-numbers] {
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+.reveal .slides section pre .highlight-line {
+  transition: none !important;
+}
+
 // Quote marks that appear inline
 .quote-mark {
   display: inline;
+}
+
+// Emphasis that fades out on reveal
+.em-fade {
+  display: inline;
+  position: relative;
+
+  em, span {
+    display: inline;
+  }
+
+  span.fragment.fade-in:not(.visible) {
+    display: none;
+  }
 }
 
 // Heavy font weight emphasis
@@ -226,8 +266,8 @@ p, li {
 
 // Section title logo
 .section-logo {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   margin-bottom: 1rem;
 }
 

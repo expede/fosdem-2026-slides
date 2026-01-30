@@ -1,6 +1,6 @@
 <div class="myslide vcenter">
 
-<blockquote class="big-text">
+<blockquote class="big-text" style="font-weight: 300;">
 Local-first isn't about<br/>"eliminating servers"
 </blockquote>
 
@@ -9,7 +9,7 @@ It's about systems that <em>respect</em> people.
 </blockquote>
 
 <blockquote class="fragment big-text accent">
-Where <span class="heavy">servers CAN'T hold<br/><em>your data</em> hostage</span>
+<span class="heavy">Where servers CAN'T</span> hold<br/><em>your data</em> hostage
 </blockquote>
 
 </div>
