@@ -1,6 +1,7 @@
 <div class="myslide vcenter">
 
-<p class="big-text">RBAC-style delegation & file systems</p>
+<p class="big-text">RBAC-style delegation</p>
+<p class="big-text">(Also file systems because same namespace)</p>
 
 <svg id="rbac-diagram" width="1094" height="594" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" style="margin-top: 1rem;">
 <defs>
@@ -9,62 +10,90 @@
 </marker>
 </defs>
 
-<line x1="95" y1="62" x2="108" y2="82" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
-<line x1="130" y1="118" x2="172" y2="148" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
-<line x1="200" y1="67" x2="200" y2="133" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
-<line x1="176" y1="186" x2="77" y2="271" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
-<line x1="186" y1="194" x2="150" y2="265" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
-<line x1="205" y1="197" x2="216" y2="263" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
-<line x1="223" y1="188" x2="304" y2="269" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
-<line x1="310" y1="305" x2="270" y2="380" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
-<line x1="330" y1="305" x2="370" y2="380" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
+<!-- Arrows: files to folder -->
+<line x1="58" y1="50" x2="92" y2="85" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
+<line x1="48" y1="100" x2="92" y2="100" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
+<line x1="58" y1="150" x2="92" y2="115" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
 
-<line x1="532" y1="63" x2="586" y2="143" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
-<line x1="600" y1="67" x2="600" y2="139" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
-<line x1="668" y1="63" x2="614" y2="143" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
-<line x1="576" y1="175" x2="340" y2="276" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
+<!-- Arrow: folder to org -->
+<line x1="140" y1="115" x2="175" y2="145" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
 
-<circle cx="80" cy="50" r="16" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
-<text x="80" y="56" text-anchor="middle" font-size="16" fill="#222">📄</text>
+<!-- Arrow: top file to org -->
+<line x1="200" y1="73" x2="200" y2="137" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
 
-<circle cx="120" cy="100" r="18" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
-<text x="120" y="107" text-anchor="middle" font-size="18" fill="#222">📁</text>
+<!-- Arrows: org to people -->
+<line x1="178" y1="185" x2="80" y2="262" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
+<line x1="188" y1="190" x2="150" y2="260" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
+<line x1="212" y1="190" x2="230" y2="260" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
+<line x1="222" y1="185" x2="300" y2="262" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
 
-<circle cx="200" cy="45" r="22" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
-<text x="200" y="52" text-anchor="middle" font-size="22" fill="#222">📄</text>
+<!-- Arrows: person to devices -->
+<line x1="305" y1="308" x2="272" y2="375" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
+<line x1="335" y1="308" x2="368" y2="375" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
 
-<circle cx="200" cy="165" r="32" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
-<text x="200" y="175" text-anchor="middle" font-size="32" fill="#222">🏢</text>
+<!-- Arrows: docs to school -->
+<line x1="535" y1="68" x2="580" y2="140" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
+<line x1="600" y1="73" x2="600" y2="137" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
+<line x1="665" y1="68" x2="620" y2="140" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
 
-<circle cx="60" cy="285" r="22" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
-<text x="60" y="292" text-anchor="middle" font-size="22" fill="#222">👩‍🔬</text>
+<!-- Arrow: school to person -->
+<line x1="575" y1="178" x2="345" y2="270" stroke="#222" stroke-width="2" marker-end="url(#arrowhead-rbac)"/>
 
-<circle cx="140" cy="285" r="22" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
-<text x="140" y="292" text-anchor="middle" font-size="22" fill="#222">👨‍🍳</text>
+<!-- Files (left) -->
+<circle cx="30" cy="40" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="30" y="50" text-anchor="middle" font-size="30" fill="#222">📄</text>
 
-<circle cx="220" cy="285" r="22" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
-<text x="220" y="292" text-anchor="middle" font-size="22" fill="#222">🧑‍🚀</text>
+<circle cx="20" cy="100" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="20" y="110" text-anchor="middle" font-size="30" fill="#222">📄</text>
 
-<circle cx="320" cy="285" r="22" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
-<text x="320" y="292" text-anchor="middle" font-size="22" fill="#222">👩‍🎨</text>
+<circle cx="30" cy="160" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="30" y="170" text-anchor="middle" font-size="30" fill="#222">📄</text>
 
-<circle cx="260" cy="400" r="22" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
-<text x="260" y="407" text-anchor="middle" font-size="20" fill="#222">📱</text>
+<!-- Folder -->
+<circle cx="120" cy="100" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="120" y="110" text-anchor="middle" font-size="30" fill="#222">📁</text>
 
-<circle cx="380" cy="400" r="22" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
-<text x="380" y="407" text-anchor="middle" font-size="20" fill="#222">💻</text>
+<!-- Top file -->
+<circle cx="200" cy="45" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="200" y="55" text-anchor="middle" font-size="30" fill="#222">📄</text>
 
-<circle cx="520" cy="45" r="22" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
-<text x="520" y="52" text-anchor="middle" font-size="22" fill="#222">📋</text>
+<!-- Org -->
+<circle cx="200" cy="165" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="200" y="175" text-anchor="middle" font-size="30" fill="#222">🏢</text>
 
-<circle cx="600" cy="45" r="22" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
-<text x="600" y="52" text-anchor="middle" font-size="22" fill="#222">📝</text>
+<!-- People -->
+<circle cx="60" cy="285" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="60" y="295" text-anchor="middle" font-size="30" fill="#222">👩‍🔬</text>
 
-<circle cx="680" cy="45" r="22" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
-<text x="680" y="52" text-anchor="middle" font-size="22" fill="#222">📑</text>
+<circle cx="140" cy="285" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="140" y="295" text-anchor="middle" font-size="30" fill="#222">👨‍🍳</text>
 
-<circle cx="600" cy="165" r="26" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
-<text x="600" y="173" text-anchor="middle" font-size="26" fill="#222">🏫</text>
+<circle cx="220" cy="285" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="220" y="295" text-anchor="middle" font-size="30" fill="#222">🧑‍🚀</text>
+
+<circle cx="320" cy="285" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="320" y="295" text-anchor="middle" font-size="30" fill="#222">👩‍🎨</text>
+
+<!-- Devices -->
+<circle cx="260" cy="400" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="260" y="410" text-anchor="middle" font-size="30" fill="#222">📱</text>
+
+<circle cx="380" cy="400" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="380" y="410" text-anchor="middle" font-size="30" fill="#222">💻</text>
+
+<!-- Docs (right) -->
+<circle cx="520" cy="45" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="520" y="55" text-anchor="middle" font-size="30" fill="#222">📋</text>
+
+<circle cx="600" cy="45" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="600" y="55" text-anchor="middle" font-size="30" fill="#222">📝</text>
+
+<circle cx="680" cy="45" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="680" y="55" text-anchor="middle" font-size="30" fill="#222">📑</text>
+
+<!-- School -->
+<circle cx="600" cy="165" r="28" fill="#fcfcfc" stroke="#222" stroke-width="2.5"/>
+<text x="600" y="175" text-anchor="middle" font-size="30" fill="#222">🏫</text>
 </svg>
 
 </div>

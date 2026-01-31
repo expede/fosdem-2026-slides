@@ -542,7 +542,7 @@
          // Animate "problems" word with clone effect when trigger fragment appears
          Reveal.on('fragmentshown', function(event) {
            // Default subtle entrance for all text fragments
-           const customAnimated = ['trigger-problems-animation', 'need-nat', 'need-availability', 'need-backup', 'or-both'];
+           const customAnimated = ['trigger-problems-animation', 'need-nat', 'need-availability', 'need-backup', 'or-both', 'caps-step-2', 'caps-step-3', 'revoke-step-2', 'bottom-timeline', 'revoke-arrow'];
            if (!customAnimated.includes(event.fragment.id) && !event.fragment.classList.contains('server-need')) {
              event.fragment.style.opacity = '0';
              event.fragment.style.transform = 'translateY(10px)';
@@ -552,6 +552,70 @@
                duration: 600,
                ease: 'outCubic'
              });
+           }
+
+           // Caps code stepping
+           if (event.fragment.id === 'caps-step-2') {
+             var capsCode = document.querySelector('#caps-code');
+             if (capsCode) {
+               capsCode.classList.remove('step-1');
+               capsCode.classList.add('step-2');
+             }
+           }
+           if (event.fragment.id === 'caps-step-3') {
+             var capsCode = document.querySelector('#caps-code');
+             if (capsCode) {
+               capsCode.classList.remove('step-2');
+               capsCode.classList.add('step-3');
+             }
+           }
+
+           // Revoke code stepping
+           if (event.fragment.id === 'revoke-step-2') {
+             var revokeCode = document.querySelector('#revoke-code');
+             if (revokeCode) {
+               revokeCode.classList.remove('step-1');
+               revokeCode.classList.add('step-2');
+             }
+           }
+
+           // Bottom timeline fade in and move down
+           if (event.fragment.id === 'bottom-timeline') {
+             anime.animate(event.fragment, {
+               opacity: [0, 1],
+               translateY: [-30, 0],
+               duration: 800,
+               ease: 'outCubic'
+             });
+           }
+
+           // Revoke arrow line draw animation
+           if (event.fragment.id === 'revoke-arrow') {
+             event.fragment.style.opacity = '1';
+             var revokePath = document.querySelector('#revoke-path');
+             var revokeCircle = event.fragment.querySelector('circle');
+             var revokeText = event.fragment.querySelector('text');
+
+             // Draw the line
+             anime.animate(revokePath, {
+               strokeDashoffset: [300, 0],
+               duration: 800,
+               ease: 'outCubic'
+             });
+
+             // Fade in circle and text after line draws
+             setTimeout(function() {
+               anime.animate(revokeCircle, {
+                 opacity: [0, 1],
+                 duration: 300,
+                 ease: 'outCubic'
+               });
+               anime.animate(revokeText, {
+                 opacity: [0, 1],
+                 duration: 300,
+                 ease: 'outCubic'
+               });
+             }, 600);
            }
 
            if (event.fragment.id === 'trigger-problems-animation') {
@@ -793,6 +857,32 @@
                duration: 500,
                ease: 'outQuad'
              });
+           }
+         });
+
+         // Handle going backwards through fragments
+         Reveal.on('fragmenthidden', function(event) {
+           if (event.fragment.id === 'caps-step-3') {
+             var capsCode = document.querySelector('#caps-code');
+             if (capsCode) {
+               capsCode.classList.remove('step-3');
+               capsCode.classList.add('step-2');
+             }
+           }
+           if (event.fragment.id === 'caps-step-2') {
+             var capsCode = document.querySelector('#caps-code');
+             if (capsCode) {
+               capsCode.classList.remove('step-2');
+               capsCode.classList.add('step-1');
+             }
+           }
+           // Revoke code stepping (backwards)
+           if (event.fragment.id === 'revoke-step-2') {
+             var revokeCode = document.querySelector('#revoke-code');
+             if (revokeCode) {
+               revokeCode.classList.remove('step-2');
+               revokeCode.classList.add('step-1');
+             }
            }
          });
 

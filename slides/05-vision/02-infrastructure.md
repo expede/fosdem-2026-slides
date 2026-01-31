@@ -8,6 +8,6 @@
 <p class="big-text fragment">We all benefit from it</p>
 <p class="big-text fragment">We all depend on it</p>
 <p class="big-text fragment">No one can take it away</p>
-<p class="big-text fragment">Has to last beyond us</p>
+<p class="big-text fragment">Lasts beyond us</p>
 
 </div>

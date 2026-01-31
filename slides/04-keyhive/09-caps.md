@@ -1,11 +1,21 @@
+<style>
+#caps-code .dim { opacity: 0.3; }
+#caps-code .highlight { opacity: 1; }
+#caps-code.step-1 .dim { opacity: 0.3; }
+#caps-code.step-1 .hl-delegation { opacity: 1; }
+#caps-code.step-2 .dim { opacity: 0.3; }
+#caps-code.step-2 .hl-proof { opacity: 1; }
+#caps-code.step-3 .dim { opacity: 1; }
+</style>
+
 <div class="myslide vcenter">
 
 <p class="big-text" style="margin-bottom: 0;">Capabilities <em>compose</em> and <em>extend</em></p>
 <p class="big-text" style="margin-top: 0;">Model ACLs, RBAC, sandboxing, and so on</p>
 
-<div style="display: flex; align-items: center; justify-content: center; gap: 2rem; margin-top: 0.5rem;">
+<div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 0.5rem;">
 
-<svg id="caps-diagram" width="850" height="580" viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg">
+<svg id="caps-diagram" width="1000" height="540" viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" style="flex: 0 0 50%;">
 <defs>
 <marker id="arrowhead-caps" markerWidth="14" markerHeight="10" refX="12" refY="5" orient="auto">
 <polygon points="0 0, 14 5, 0 10" fill="#222"/>
@@ -49,21 +59,18 @@
 </g>
 </svg>
 
-<pre class="fragment" data-fragment-index="4" style="font-size: 0.7rem; text-align: left; margin: 0; max-width: 50%;"><code class="language-rust" data-trim data-noescape>Signed {
-    issuer: alice.id(),
-    signature: 0x1234567890,
+<pre id="caps-code" class="fragment step-1" data-fragment-index="4" style="font-size: 0.7rem; text-align: left; margin: 0; flex: 0 0 38%; background: #FFF !important; border: 1px solid #ccd0da !important; border-radius: 6px; padding: 1rem; color: #4c4f69 !important; overflow: visible !important;"><code class="nohighlight" data-noescape style="background: transparent !important; color: #4c4f69 !important; overflow: visible !important; max-height: none !important; box-shadow: none !important;"><span class="dim"><span style="color:#8839ef !important">Signed</span> {
+    <span style="color:#fe640b !important">issuer</span>: alice.id,
+    <span style="color:#fe640b !important">signature</span>: <span style="color:#1e66f5 !important">0x1234567890</span>,
 
-    payload: Delegation {
-        delegate: bob.id(),
-        can: Access::Edit,
-
-        proof: Some(alice_delegation),
-        after_revocations: vec![revocation1, revocation2],
-        after_content: BTreeMap::from_iter(
-          [doc1, Digest(0x02468)]
-        )
-    }
-}</code></pre>
+    <span style="color:#fe640b !important">payload</span>: </span><span class="hl-delegation"><span style="color:#8839ef !important">Delegation</span> {
+        <span style="color:#fe640b !important">delegate</span>: bob.id,
+        <span style="color:#fe640b !important">can</span>: <span style="color:#8839ef !important">Action</span>::Edit,
+</span><span class="dim hl-proof">        <span style="color:#fe640b !important">proof</span>: <span style="color:#8839ef !important">Some</span>(alice_delegation),
+</span><span class="dim">    }
+}</span></code></pre>
+<span class="fragment" data-fragment-index="5" id="caps-step-2" style="display:none;"></span>
+<span class="fragment" data-fragment-index="6" id="caps-step-3" style="display:none;"></span>
 
 </div>
 
