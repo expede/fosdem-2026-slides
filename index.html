@@ -556,7 +556,7 @@
          // Animate "problems" word with clone effect when trigger fragment appears
          Reveal.on('fragmentshown', function(event) {
            // Default subtle entrance for all text fragments
-           const customAnimated = ['trigger-problems-animation', 'need-nat', 'need-availability', 'need-backup', 'or-both', 'caps-step-2', 'caps-step-3', 'revoke-step-2', 'bottom-timeline', 'revoke-arrow'];
+           const customAnimated = ['trigger-problems-animation', 'need-nat', 'need-availability', 'need-backup', 'or-both', 'caps-step-2', 'caps-step-3', 'revoke-step-2', 'bottom-timeline', 'revoke-arrow', 'pojo-step-2', 'pojo-step-3', 'pojo-step-4', 'pojo-step-5'];
            if (!customAnimated.includes(event.fragment.id) && !event.fragment.classList.contains('server-need')) {
              event.fragment.style.opacity = '0';
              event.fragment.style.transform = 'translateY(10px)';
@@ -591,6 +591,24 @@
                revokeCode.classList.remove('step-1');
                revokeCode.classList.add('step-2');
              }
+           }
+
+           // POJO code stepping
+           if (event.fragment.id === 'pojo-step-2') {
+             var pojoCode = document.querySelector('#pojo-code');
+             if (pojoCode) { pojoCode.classList.remove('step-1'); pojoCode.classList.add('step-2'); }
+           }
+           if (event.fragment.id === 'pojo-step-3') {
+             var pojoCode = document.querySelector('#pojo-code');
+             if (pojoCode) { pojoCode.classList.remove('step-2'); pojoCode.classList.add('step-3'); }
+           }
+           if (event.fragment.id === 'pojo-step-4') {
+             var pojoCode = document.querySelector('#pojo-code');
+             if (pojoCode) { pojoCode.classList.remove('step-3'); pojoCode.classList.add('step-4'); }
+           }
+           if (event.fragment.id === 'pojo-step-5') {
+             var pojoCode = document.querySelector('#pojo-code');
+             if (pojoCode) { pojoCode.classList.remove('step-4'); pojoCode.classList.add('step-5'); }
            }
 
            // Bottom timeline fade in and move down
@@ -897,6 +915,23 @@
                revokeCode.classList.remove('step-2');
                revokeCode.classList.add('step-1');
              }
+           }
+           // POJO code stepping (backwards)
+           if (event.fragment.id === 'pojo-step-5') {
+             var pojoCode = document.querySelector('#pojo-code');
+             if (pojoCode) { pojoCode.classList.remove('step-5'); pojoCode.classList.add('step-4'); }
+           }
+           if (event.fragment.id === 'pojo-step-4') {
+             var pojoCode = document.querySelector('#pojo-code');
+             if (pojoCode) { pojoCode.classList.remove('step-4'); pojoCode.classList.add('step-3'); }
+           }
+           if (event.fragment.id === 'pojo-step-3') {
+             var pojoCode = document.querySelector('#pojo-code');
+             if (pojoCode) { pojoCode.classList.remove('step-3'); pojoCode.classList.add('step-2'); }
+           }
+           if (event.fragment.id === 'pojo-step-2') {
+             var pojoCode = document.querySelector('#pojo-code');
+             if (pojoCode) { pojoCode.classList.remove('step-2'); pojoCode.classList.add('step-1'); }
            }
          });
 

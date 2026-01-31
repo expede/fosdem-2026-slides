@@ -4,7 +4,7 @@
 
 <p data-id="tagline">Like Git for <strong>JSON</strong></p>
 
-<div data-id="bullet-container" style="text-align: left; max-width: 800px; margin: 2rem auto; min-height: 400px;">
+<div data-id="bullet-container" style="text-align: center; max-width: 100%; margin: 2rem auto; min-height: 400px;">
   <p class="fragment">JSON is ubiquitous and generic</p>
   <p class="fragment">Good for interoperability</p>
 </div>
