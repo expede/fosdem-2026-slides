@@ -13,7 +13,6 @@
 <p class="fragment" data-fragment-index="1">Finality / "who can do what <em>right now</em>"</p>
 <p class="fragment" data-fragment-index="2">Server can block access anytime</p>
 <p class="fragment" data-fragment-index="3">Need live connection (server or admins)</p>
-<p class="fragment" data-fragment-index="4">Implicit: easy to get <em>wrong</em></p>
 
 </div>
 
@@ -27,7 +26,6 @@
 <p class="fragment" data-fragment-index="1">Causal, could always change</p>
 <p class="fragment" data-fragment-index="2"><em>Auth travels</em> with the document</p>
 <p class="fragment" data-fragment-index="3">Works <em>offline indefinitely</em></p>
-<p class="fragment" data-fragment-index="4">Explicit: clear, direct primitives</p>
 
 </div>
 

@@ -1,0 +1,14 @@
+<div class="myslide titled" data-auto-animate>
+
+# Version Controlled JSON
+
+<p data-id="tagline">Like <strong>Git</strong> for JSON</p>
+
+<div data-id="bullet-container" style="text-align: left; max-width: 800px; margin: 2rem auto; min-height: 400px;">
+  <p class="fragment">Server just ships commits around</p>
+  <p class="fragment">We can examine the history</p>
+  <p class="fragment">It's hash linked so no need to trust the server that it delivered everything I sent</p>
+  <p class="fragment">We can sign over commits</p>
+</div>
+
+</div>

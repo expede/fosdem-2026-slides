@@ -42,8 +42,6 @@
                 <section data-markdown="slides/01-intro/01-title.md"></section>
                 <section data-markdown="slides/01-intro/02-speakers.md"></section>
                 <section data-markdown="slides/01-intro/03-sponsors.md"></section>
-                <section data-markdown="slides/01-intro/04-local-first-definition.md"></section>
-                <section data-markdown="slides/01-intro/05-the-problem-teaser.md"></section>
 
                 <!-- Section 2: The Problem -->
                 <section data-markdown="slides/02-problem/01-section-title.md"></section>
@@ -57,7 +55,10 @@
                 <!-- Section 3: Automerge -->
                 <section data-markdown="slides/03-automerge/01-section-title.md"></section>
                 <section data-markdown="slides/03-automerge/02-code-example.md"></section>
-                <section data-markdown="slides/03-automerge/02-crdt-intro.md"></section>
+                <section data-markdown="slides/03-automerge/02-how.md"></section>
+                <section data-markdown="slides/03-automerge/02-crdt-intro-1.md"></section>
+                <section data-markdown="slides/03-automerge/02-crdt-intro-2.md"></section>
+                <section data-markdown="slides/03-automerge/02-crdt-intro-3.md"></section>
                 <section data-markdown="slides/03-automerge/04-client-side-merge.md"></section>
                 <section data-markdown="slides/03-automerge/05-dumb-pipe.md"></section>
                 <section data-markdown="slides/03-automerge/06-portability.md"></section>
@@ -67,15 +68,14 @@
                 <section data-markdown="slides/04-keyhive/01-section-title.md"></section>
                 <section data-markdown="slides/04-keyhive/02-signal-for-docs.md"></section>
                 <section data-markdown="slides/04-keyhive/03-requirements.md"></section>
-                <section data-markdown="slides/04-keyhive/04-expressive.md"></section>
-                <section data-markdown="slides/04-keyhive/05-comparison.md"></section>
-                <section data-markdown="slides/04-keyhive/06-trust-minimized.md"></section>
+                <section data-markdown="slides/04-keyhive/04-e2e-encrypted.md"></section>
+                <section data-markdown="slides/04-keyhive/05-expressive.md"></section>
+                <section data-markdown="slides/04-keyhive/06-comparison.md"></section>
                 <section data-markdown="slides/04-keyhive/07-switch-servers.md"></section>
-                <section data-markdown="slides/04-keyhive/08-e2e-encrypted.md"></section>
-                <section data-markdown="slides/04-keyhive/09-caps.md"></section>
-                <section data-markdown="slides/04-keyhive/10-rbac.md"></section>
-                <section data-markdown="slides/04-keyhive/11-timelines.md"></section>
-                <section data-markdown="slides/04-keyhive/12-no-admins.md"></section>
+                <section data-markdown="slides/04-keyhive/08-caps.md"></section>
+                <section data-markdown="slides/04-keyhive/09-rbac.md"></section>
+                <section data-markdown="slides/04-keyhive/10-timelines.md"></section>
+                <section data-markdown="slides/04-keyhive/11-no-admins.md"></section>
 
                 <!-- Section 5: The Vision -->
                 <section data-markdown="slides/05-vision/01-section-title.md"></section>
@@ -442,70 +442,84 @@
              }, 4900);
          }
 
-         function animateGrandVision() {
-           const textEl = document.querySelector('#grand-vision-text');
-           if (!textEl || textEl.dataset.animated) return;
-           textEl.dataset.animated = 'true';
+          // Track animation state for cleanup
+          var glitchTimeoutId = null;
+          var sparkleIntervalId = null;
+          var grandVisionActive = false;
 
-           // Split text into characters
-           const { chars } = anime.splitText(textEl, { chars: true });
+          function animateGrandVision() {
+            const textEl = document.querySelector('#grand-vision-text');
+            if (!textEl || textEl.dataset.animated) return;
+            textEl.dataset.animated = 'true';
+            grandVisionActive = true;
 
-           // Random independent movement for each character
-           chars.forEach(function(char) {
-             function animateChar() {
-               anime.animate(char, {
-                 translateY: [0, -5 - Math.random() * 10, 0],
-                 translateX: [0, -3 + Math.random() * 6, 0],
-                 rotate: [0, -4 + Math.random() * 8, 0],
-                 duration: 600 + Math.random() * 800,
-                 ease: 'inOutSine',
-                 onComplete: animateChar
-               });
-             }
-             // Start each character with a random delay
-             setTimeout(animateChar, Math.random() * 1000);
-           });
+            // Split text into characters
+            const { chars } = anime.splitText(textEl, { chars: true });
 
-           // Create sparkle container (just the "Grand Vision" text)
-           textEl.style.position = 'relative';
-           textEl.style.display = 'inline-block';
-           textEl.style.color = '#fc3';
-           textEl.style.webkitTextStroke = '6px #222';
-           textEl.style.paintOrder = 'stroke fill';
+            // Random independent movement for each character
+            chars.forEach(function(char) {
+              function animateChar() {
+                if (!grandVisionActive) return; // Stop if slide changed
+                anime.animate(char, {
+                  translateY: [0, -5 - Math.random() * 10, 0],
+                  translateX: [0, -3 + Math.random() * 6, 0],
+                  rotate: [0, -4 + Math.random() * 8, 0],
+                  duration: 600 + Math.random() * 800,
+                  ease: 'inOutSine',
+                  onComplete: animateChar
+                });
+              }
+              // Start each character with a random delay
+              setTimeout(animateChar, Math.random() * 1000);
+            });
 
-           // Generate sparkles
-           function createSparkle() {
-             const sparkle = document.createElement('span');
-             sparkle.innerHTML = '✦';
-             sparkle.style.cssText = 'position: absolute; pointer-events: none; font-size: 0.5em; opacity: 0; color: #fc3; -webkit-text-stroke: 0;';
-             sparkle.style.left = (Math.random() * 100) + '%';
-             sparkle.style.top = (Math.random() * 100 - 50) + '%';
-             textEl.appendChild(sparkle);
+            // Create sparkle container (just the "Grand Vision" text)
+            textEl.style.position = 'relative';
+            textEl.style.display = 'inline-block';
+            textEl.style.color = '#fc3';
+            textEl.style.webkitTextStroke = '6px #222';
+            textEl.style.paintOrder = 'stroke fill';
 
-             anime.animate(sparkle, {
-               opacity: [0, 0.8, 0],
-               scale: [0.5, 1.2, 0.5],
-               translateY: [0, -15],
-               duration: 1200,
-               ease: 'outQuad',
-               onComplete: function() { sparkle.remove(); }
-             });
-           }
+            // Generate sparkles
+            function createSparkle() {
+              if (!grandVisionActive) return; // Stop if slide changed
+              const sparkle = document.createElement('span');
+              sparkle.innerHTML = '✦';
+              sparkle.style.cssText = 'position: absolute; pointer-events: none; font-size: 0.5em; opacity: 0; color: #fc3; -webkit-text-stroke: 0;';
+              sparkle.style.left = (Math.random() * 100) + '%';
+              sparkle.style.top = (Math.random() * 100 - 50) + '%';
+              textEl.appendChild(sparkle);
 
-           // Spawn sparkles periodically
-           setInterval(createSparkle, 400);
-         }
+              anime.animate(sparkle, {
+                opacity: [0, 0.8, 0],
+                scale: [0.5, 1.2, 0.5],
+                translateY: [0, -15],
+                duration: 1200,
+                ease: 'outQuad',
+                onComplete: function() { sparkle.remove(); }
+              });
+            }
 
-         // Track glitch animation timeout for cleanup
-         var glitchTimeoutId = null;
+            // Spawn sparkles periodically
+            sparkleIntervalId = setInterval(createSparkle, 400);
+          }
 
-         // Trigger animations on slide change
-         Reveal.on('slidechanged', function(event) {
-           // Stop glitch animation when leaving that slide
-           if (glitchTimeoutId) {
-             clearTimeout(glitchTimeoutId);
-             glitchTimeoutId = null;
-           }
+          // Trigger animations on slide change
+          Reveal.on('slidechanged', function(event) {
+            // Stop glitch animation when leaving that slide
+            if (glitchTimeoutId) {
+              clearTimeout(glitchTimeoutId);
+              glitchTimeoutId = null;
+            }
+
+            // Stop grand vision animations when leaving that slide
+            if (!event.currentSlide.querySelector('#grand-vision-text')) {
+              grandVisionActive = false;
+              if (sparkleIntervalId) {
+                clearInterval(sparkleIntervalId);
+                sparkleIntervalId = null;
+              }
+            }
 
            // Animate switch servers illustration
            if (event.currentSlide.querySelector('#switch-servers-illustration')) {
@@ -847,18 +861,18 @@
                }, 2200);
            }
 
-           // "or both" - fade and drift from above
-           if (event.fragment.id === 'or-both') {
-             event.fragment.style.transform = 'translateY(-1lh)';
-             event.fragment.style.opacity = '0';
-             anime.animate(event.fragment, {
-               translateY: [ '-2lh', '0' ],
-               opacity: 1,
-               duration: 500,
-               ease: 'outQuad'
-             });
-           }
-         });
+            // "or both" - fade and drift from above
+            if (event.fragment.id === 'or-both') {
+              event.fragment.style.transform = 'translateY(-1lh)';
+              event.fragment.style.opacity = '0';
+              anime.animate(event.fragment, {
+                translateY: [ '-2lh', '0' ],
+                opacity: 1,
+                duration: 500,
+                ease: 'outQuad'
+              });
+            }
+          });
 
          // Handle going backwards through fragments
          Reveal.on('fragmenthidden', function(event) {

@@ -65,6 +65,11 @@
   <g class="fragment" data-fragment-index="6">
     <text x="490" y="460" text-anchor="middle" font-size="26" fill="#222" font-style="italic">Neither layer alone is sufficient — both must fail for data to leak</text>
   </g>
+
+  <!-- Confused emoji on "Every Node" box -->
+  <g class="fragment" data-fragment-index="7">
+    <text x="680" y="85" font-size="56">😵‍💫</text>
+  </g>
 </svg>
 
 </div>
