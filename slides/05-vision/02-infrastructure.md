@@ -1,7 +1,6 @@
 <div class="myslide vcenter">
 
 <p class="big-text">This is <em>infrastructure</em></p>
-<p class="big-text fragment">(Not a product)</p>
 
 <hr style="border: none; border-top: 2px solid #ccc; width: 20%; margin: 1.5rem auto;"/>
 
