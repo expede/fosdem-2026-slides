@@ -38,6 +38,7 @@
 <path d="M300 80 Q390 20 480 72" stroke="#fc3" stroke-width="5" fill="none" marker-end="url(#arrowhead-yellow)"/>
 <g class="fat-arrow" transform="translate(300, 100) rotate(180)">
 <polygon points="-25,-10 10,-10 10,-18 30,0 10,18 10,10 -25,10" fill="#fc3" stroke="#222" stroke-width="2"/>
+<text x="-8" y="6" text-anchor="middle" font-size="16" font-weight="bold" fill="#222" transform="rotate(180)">1</text>
 </g>
 </g>
 <g class="fragment" data-fragment-index="3">
@@ -45,6 +46,7 @@
 <line x1="220" y1="170" x2="280" y2="115" stroke="#fc3" stroke-width="5" marker-end="url(#arrowhead-yellow)"/>
 <g class="fat-arrow" transform="translate(200, 170) rotate(48)">
 <polygon points="-25,-10 10,-10 10,-18 30,0 10,18 10,10 -25,10" fill="#fc3" stroke="#222" stroke-width="2"/>
+<text x="-3" y="4" text-anchor="middle" font-size="14" font-weight="bold" fill="#222" transform="rotate(-48)">2</text>
 </g>
 </g>
 <g class="fragment" data-fragment-index="4">
@@ -55,6 +57,7 @@
 <text x="550" y="310" text-anchor="middle" font-size="32" fill="#222">🧑‍🎨</text>
 <g class="fat-arrow" transform="translate(420, 300) rotate(0)">
 <polygon points="-25,-10 10,-10 10,-18 30,0 10,18 10,10 -25,10" fill="#fc3" stroke="#222" stroke-width="2"/>
+<text x="-8" y="6" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">3</text>
 </g>
 </g>
 </svg>
