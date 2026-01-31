@@ -1,9 +1,8 @@
 <div class="myslide titled">
 
-# CRDTs
+# Version Controlled JSON
 
-<p class="fragment">Merge any edits, from anywhere</p>
-<p class="fragment">No central coordinator</p>
-<p class="fragment">Mathematically guaranteed consistency</p>
+<p class="fragment">Like Git for JSON</p>
+
 
 </div>
