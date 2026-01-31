@@ -1,9 +1,11 @@
 <div class="myslide vcenter">
 
-<p class="big-text">Capabilities <em>compose</em> and <em>extend</em></p>
-<p class="big-text">Model ACLs, RBAC, sandboxing, and so on</p>
+<p class="big-text" style="margin-bottom: 0;">Capabilities <em>compose</em> and <em>extend</em></p>
+<p class="big-text" style="margin-top: 0;">Model ACLs, RBAC, sandboxing, and so on</p>
 
-<svg id="caps-diagram" width="1094" height="594" viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" style="margin-top: 2rem;">
+<div style="display: flex; align-items: center; justify-content: center; gap: 2rem; margin-top: 0.5rem;">
+
+<svg id="caps-diagram" width="850" height="580" viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <marker id="arrowhead-caps" markerWidth="14" markerHeight="10" refX="12" refY="5" orient="auto">
 <polygon points="0 0, 14 5, 0 10" fill="#222"/>
@@ -46,5 +48,23 @@
 </g>
 </g>
 </svg>
+
+<pre class="fragment" data-fragment-index="4" style="font-size: 0.7rem; text-align: left; margin: 0; max-width: 50%;"><code class="language-rust" data-trim data-noescape>Signed {
+    issuer: alice.id(),
+    signature: 0x1234567890,
+
+    payload: Delegation {
+        delegate: bob.id(),
+        can: Access::Edit,
+
+        proof: Some(alice_delegation),
+        after_revocations: vec![revocation1, revocation2],
+        after_content: BTreeMap::from_iter(
+          [doc1, Digest(0x02468)]
+        )
+    }
+}</code></pre>
+
+</div>
 
 </div>
