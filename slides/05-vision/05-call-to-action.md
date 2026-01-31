@@ -1,10 +1,9 @@
 <div class="myslide titled">
 
-# Join Us In
-# Building This Future
+# Status
 
-<p class="fragment">Contribute to Automerge &amp; Keyhive</p>
-<p class="fragment">Advocate for inclusion in distros</p>
-<p class="fragment">Build apps on this foundation</p>
+<p class="fragment">Automerge: use it today! Actively maintained</p>
+<p class="fragment">Written in Rust, runs everywhere, bindings for JS, Swift, Go, (and Python in alpha)</p>
+<p class="fragment">Keyhive: available  soon:tm:</p>
 
 </div>
