@@ -9,7 +9,7 @@
 <marker id="arr-req-red" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#c44"/></marker>
 </defs>
 <g class="fragment" data-fragment-index="1">
-<text x="270" y="40" text-anchor="middle" font-size="36" font-weight="600" fill="#222">🔐 E2EE & At-Rest</text>
+<text x="270" y="40" text-anchor="middle" font-size="36" font-weight="600" fill="#222">🔐 Group E2EE & PCS</text>
 <rect x="30" y="80" width="100" height="70" rx="6" fill="#fcfcfc" stroke="#222" stroke-width="3"/>
 <rect x="38" y="88" width="84" height="48" rx="3" fill="#222"/>
 <text x="80" y="120" text-anchor="middle" font-size="28" fill="#fc3">📄</text>
